@@ -71,7 +71,7 @@ App::register('Mrcore\BootswatchTheme\BootswatchThemeServiceProvider');
 // Define Main Theme CSS File
 // default amelia darkly lumen spacelab cerulean readable superhero
 // cosmo flatly simplex united cyborg journal slate yeti
-$theme = 'default';
+$theme = 'simplex';
 Layout::replaceCss("css/bootstrap/", "css/bootstrap/$theme.min.css");
 // Favs: default, darkly, spacelab, superhero, flatly, simplex, cyborg, slate, yeti
 
