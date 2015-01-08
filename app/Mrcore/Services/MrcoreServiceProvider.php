@@ -85,26 +85,29 @@ class MrcoreServiceProvider extends ServiceProvider
 		// Detect if accessing /file and passing basic/digest auth username (so using curl or wget...)
 		$fileHttpAuth = (Request::is('file*') && Request::server('PHP_AUTH_USER'));
 
-		// Login as anonymous if no one is logged in yet (first time to site)
-		/*if ($isWebdav || (Request::is('file*') && Request::server('PHP_AUTH_USER'))) {
-		} else {
-			if (!Auth::check()) {
-				$user = User::find(Config::get('mrcore.anonymous'));
-				Auth::login($user);
-				Auth::user()->login();
-			}
-			
-		}*/
-	
 		try {
+
+			// Login as anonymous if no one is logged in yet (first time to site)
+			if ($isWebdav || (Request::is('file*') && Request::server('PHP_AUTH_USER'))) {
+			} else {
+				if (!Auth::check()) {
+					$user = User::find(Config::get('mrcore.anonymous'));
+					Auth::login($user);
+					Auth::user()->login();
+				}
+				
+			}
+
+			// NOTE, this attempt never worked, there was no cookie showing in browser, but it kept
+			// making a session file in app/storage/session on every click, so forget it
 			// Login one time (no session) as anonymous only if regular web.
 			// Do not login as anonymous if webdav or hitting the /file path with a username passed (curl/wget)
-			if (!Auth::check() && !$isWebdav && !$fileHttpAuth) {
+			/*if (!Auth::check() && !$isWebdav && !$fileHttpAuth) {
 				if (!Request::is('login')) {
 					Config::set('session.driver', 'array');
 				}
 				Auth::onceUsingId(Config::get('mrcore.anonymous'));
-			}
+			}*/
 
 			// Set some Mrcore API data
 			Mrcore::user()->setModel(Auth::user());
