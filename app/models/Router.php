@@ -47,7 +47,7 @@ class Router extends Eloquent {
 	 */
 	public static function findDefaultByPost($postID)
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_default_post_$id", function() use($postID) {
+		return Mrcore\Cache::remember(strtolower(get_class())."_default_post_$postID", function() use($postID) {
 			return Router::where('post_id', $postID)
 				->where('default', true)
 				->where('disabled', false)
