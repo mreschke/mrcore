@@ -16,7 +16,6 @@ class PostBadge extends Eloquent {
 	 */
 	public $timestamps = false;
 
-
 	/**
 	 * Set post badges to the given array
 	 *

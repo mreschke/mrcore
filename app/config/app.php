@@ -18,18 +18,6 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
-	| Error Reporting
-	|--------------------------------------------------------------------------
-	|
-	| -1 is default, verbose, shows all errors and notices, for development
-	| 0 is quiet, no warnings or notices, for production
-	|
-	*/
-
-	error_reporting(0),
-
-	/*
-	|--------------------------------------------------------------------------
 	| Application URL
 	|--------------------------------------------------------------------------
 	|
@@ -139,6 +127,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Additional Services
+		'Barryvdh\Debugbar\ServiceProvider',
 		#'Way\Generators\GeneratorsServiceProvider',
 		
 		// Mrcore Services

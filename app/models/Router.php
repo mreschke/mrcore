@@ -25,7 +25,6 @@ class Router extends Eloquent {
 		return $this->belongsTo('User', 'created_by');
 	}
 
-
 	/**
 	 * Find default enalbed route by route id
 	 * @param  int $id route id
@@ -33,12 +32,13 @@ class Router extends Eloquent {
 	 */
 	public static function findDefault($id)
 	{
-		return Router::where('id', $id)
-			->where('default', true)
-			->where('disabled', false)
-			->first();
+		return Mrcore\Cache::remember(strtolower(get_class())."_default_$id", function() use($id) {
+			return Router::where('id', $id)
+				->where('default', true)
+				->where('disabled', false)
+				->first();
+		});
 	}
-
 
 	/**
 	 * Get default route for this post ID
@@ -47,12 +47,13 @@ class Router extends Eloquent {
 	 */
 	public static function findDefaultByPost($postID)
 	{
-		return Router::where('post_id', $postID)
-			->where('default', true)
-			->where('disabled', false)
-			->first();
+		return Mrcore\Cache::remember(strtolower(get_class())."_default_post_$id", function() use($postID) {
+			return Router::where('post_id', $postID)
+				->where('default', true)
+				->where('disabled', false)
+				->first();
+		});
 	}
-
 
 	/**
 	 * Alias to findDefaultByPost
@@ -62,7 +63,6 @@ class Router extends Eloquent {
 		return Router::findDefaultByPost($postID);
 	}
 
-
 	/**
 	 * Get route from router table by slug
 	 * This would be a static route
@@ -71,12 +71,13 @@ class Router extends Eloquent {
 	 */
 	public static function bySlug($slug)
 	{
-		return Router::where('slug', $slug)
-			->where('disabled', false)
-			->where('static', true)
-			->first();
+		return Mrcore\Cache::remember(strtolower(get_class())."_static_$slug", function() use($slug) {
+			return Router::where('slug', $slug)
+				->where('disabled', false)
+				->where('static', true)
+				->first();
+		});
 	}
-
 
 	/**
 	 * Increment route clicks (views)
@@ -89,7 +90,6 @@ class Router extends Eloquent {
 		$this->clicks += 1;
 		$this->save();
 	}
-
 
 	public static function getRoutes()
 	{

@@ -126,7 +126,7 @@ class SearchController extends BaseController {
 		// Ajax only controller
 		if (!Request::ajax()) return Response::notFound();
 
-		$post = Post::find(Config::get('mrcore.searchmenu'));
+		$post = Post::get(Config::get('mrcore.searchmenu'));
 		if (!isset($post)) return Response::notFound();
 
 		// Parse Post Now!
