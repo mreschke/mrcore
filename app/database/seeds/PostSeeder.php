@@ -11,8 +11,8 @@ class PostSeeder extends Seeder
 		#---------------------------------------------------------------
 		Post::create(array(
 			'uuid' => \Mrcore\Helpers\String::getGuid(),
-			'title' => 'Home',
-			'slug' => 'home',
+			'title' => 'Home Page',
+			'slug' => 'home-page',
 			'content' =>  Mrcore\Crypt::encrypt("<div class='jumbotron'>
 	<h1>Welcome to mRcore</h1>
 	<p>A Wiki/CMS system built with Laravel</p>
@@ -32,7 +32,7 @@ class PostSeeder extends Seeder
 			'created_by' => 2,
 			'updated_by' => 2,
 		));
-		Router::create(array('slug' => 'home', 'post_id' => 1, 'static' => true));
+		Router::create(array('slug' => 'home-page', 'post_id' => 1, 'static' => false));
 
 
 
@@ -361,6 +361,223 @@ New Document'),
 			'updated_by' => 2,
 		));
 		Router::create(array('slug' => 'default-app-template', 'post_id' => 10));
+
+
+		
+
+		########################################
+		### Custom Dynatron Xendev Additions ###
+		########################################
+
+		#11 Dashboard
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Dashboard',
+			'slug' => 'dashboard',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/dashboard',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'dashboard', 'post_id' => 11, 'static' => true));
+
+
+
+		#12 Menu
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Product Menu',
+			'slug' => 'product-menu',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/menu',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'app/menu', 'post_id' => 12, 'static' => true));
+
+
+
+		#13 Website
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Website',
+			'slug' => 'website',
+			'content' =>  Mrcore\Crypt::encrypt('<?php Layout::replaceCss("css/bootstrap/", "css/bootstrap/default.min.css");'),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/website',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'home', 'post_id' => 13, 'static' => true));
+
+
+
+		#14 API
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Dynatron REST API',
+			'slug' => 'dynatron-rest-api',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/api',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'api', 'post_id' => 14, 'static' => true));
+
+
+
+		#15 VFI
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'VFI',
+			'slug' => 'vfi',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/vfi',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'app/vfi', 'post_id' => 15, 'static' => true));		
+
+
+
+		#16 Render
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Render',
+			'slug' => 'render',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/render',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'app/render', 'post_id' => 16, 'static' => true));	
+
+		#17 Loadbalancer Stats
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Loadbalancer Stats',
+			'slug' => 'loadbalancer-stats',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/lbstat',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'app/lbstat', 'post_id' => 17, 'static' => true));	
+
+		#18 Data Warehouse
+		#---------------------------------------------------------------
+		Post::create(array(
+			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'title' => 'Data Warehouse',
+			'slug' => 'data-warehouse',
+			'content' =>  Mrcore\Crypt::encrypt(''),
+			'teaser' => Mrcore\Crypt::encrypt(''),
+			'workbench' => 'app/warehouse',
+			'contains_script' => true,
+			'contains_html' => true,
+			'format_id' => 2,#php
+			'type_id' => 3,#app
+			'framework_id' => 2,#workbench
+			'mode_id' => 1,
+			'symlink' => true,
+			'shared' => false,
+			'hidden' => false,
+			'deleted' => false,
+			'indexed_at' => '1900-01-01 00:00:00',
+			'created_by' => 2,
+			'updated_by' => 2,
+		));
+		Router::create(array('slug' => 'app/warehouse', 'post_id' => 18, 'static' => true));
 
 
 	}

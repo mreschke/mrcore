@@ -16,17 +16,17 @@ return array(
 
 	'debug' => getenv('debug'),
 
-	/*
-	|--------------------------------------------------------------------------
-	| Error Reporting
-	|--------------------------------------------------------------------------
-	|
-	| -1 is default, verbose, shows all errors and notices, for development
-	| 0 is quiet, no warnings or notices, for production
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Error Reporting
+    |--------------------------------------------------------------------------
+    |
+    | -1 is default, verbose, shows all errors and notices, for development
+    | 0 is quiet, no warnings or notices, for production
+    |
+    */
 
-	error_reporting(0),
+    #error_reporting(0),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -139,8 +139,9 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Additional Services
+		'Barryvdh\Debugbar\ServiceProvider',
 		#'Way\Generators\GeneratorsServiceProvider',
-		
+
 		// Mrcore Services
 		'Mrcore\Services\MrcoreServiceProvider',
 		'Mrcore\Services\RouterServiceProvider',
@@ -150,6 +151,9 @@ return array(
 
 		// Custom Services
 		// Please define your custom services in workbench/register.php
+
+		//'Dynatron\Framework\FrameworkServiceProvider',
+		
 
 	),
 

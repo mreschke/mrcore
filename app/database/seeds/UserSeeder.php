@@ -38,6 +38,22 @@ class UserSeeder extends Seeder
 			'disabled'       => false
 		));
 
+		// 3 mreschke
+		User::create(array(
+			'uuid'     => \Mrcore\Helpers\String::getGuid(),
+			'email'    => 'mreschke@dynatronsoftware.com',
+			'password' => Hash::make('techie'),
+			'first'    => 'Matthew',
+			'last'     => 'Reschke',
+			'alias'    => 'mreschke',
+			'avatar'   => 'avatar_user3.png',
+			'global_post_id' => 4,
+			'home_post_id'   => 3,
+			'login_at'  => '1900-01-01 00:00:00',
+			'disabled'       => false
+		));
+
+
 	}
 
 }

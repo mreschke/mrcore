@@ -13,15 +13,9 @@ class TagSeeder extends Seeder
 
 
 		DB::table('post_tags')->delete();
-		PostTag::create(array('post_id' => 1, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 2, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 3, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 4, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 5, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 6, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 7, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 8, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 9, 'tag_id' => 1));
-		PostTag::create(array('post_id' => 10, 'tag_id' => 1));
+		for ($i = 1; $i <= 18; $i++) {
+			PostTag::create(array('post_id' => $i, 'tag_id' => 1));
+		}
+
 	}
 }

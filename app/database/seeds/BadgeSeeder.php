@@ -12,15 +12,10 @@ class BadgeSeeder extends Seeder
 		));
 
 		DB::table('post_badges')->delete();
-		PostBadge::create(array('post_id' => 1, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 2, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 3, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 4, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 5, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 6, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 7, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 8, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 9, 'badge_id' => 1));
-		PostBadge::create(array('post_id' => 10, 'badge_id' => 1));
+
+		for ($i = 1; $i <= 18; $i++) {
+			PostBadge::create(array('post_id' => $i, 'badge_id' => 1));
+		}
+
 	}
 }

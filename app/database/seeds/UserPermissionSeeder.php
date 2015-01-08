@@ -10,6 +10,9 @@ class UserPermissionSeeder extends Seeder
 
 		UserPermission::create(array('user_id' => 2, 'permission_id' => 4)); # Admin Admin
 
+		UserPermission::create(array('user_id' => 3, 'permission_id' => 4));
+
+
 	}
 
 }

@@ -7,6 +7,7 @@
 |--------------------------------------------------------------------------
 |
 | Register your custom aliases/facades here
+| Or use your own custom service provider
 |
 */
 
@@ -27,15 +28,8 @@
 |
 */
 
-// Provides legacy mrcore4 helpers
-#App::register('Mreschke\Mrcore4Legacy\Mrcore4LegacyServiceProvider');
-
-// Provides database layers like MSSQL
-#App::register('Mreschke\Dbal\DbalServiceProvider');
-
-// Provides GUI rendering components like dataTables, charts and graphs
-// Depends on Mreschke\Dbal
-#App::register('Mreschke\Render\RenderServiceProvider');
+// Register the main Dynatron Service Provider
+App::register('Dynatron\Framework\FrameworkServiceProvider');
 
 
 
@@ -53,7 +47,7 @@
 |
 */
 
-App::register('Theme\DefaultTheme\DefaultThemeServiceProvider');
+App::register('Theme\Dynatron\DynatronServiceProvider');
 App::register('Mrcore\BootswatchTheme\BootswatchThemeServiceProvider');
 
 
@@ -68,10 +62,9 @@ App::register('Mrcore\BootswatchTheme\BootswatchThemeServiceProvider');
 |
 */
 
-// Define Main Theme CSS File
-// default amelia darkly lumen spacelab cerulean readable superhero
-// cosmo flatly simplex united cyborg journal slate yeti
-$theme = 'simplex';
-Layout::replaceCss("css/bootstrap/", "css/bootstrap/$theme.min.css");
-// Favs: default, darkly, spacelab, superhero, flatly, simplex, cyborg, slate, yeti
-
+// Bootswatch Theme Override
+// default cerulean cosmo cyborg darkly flatly journal lumen paper
+// readable sandstone simplex slate spacelab superhero united yeti
+$theme = 'dynatron';
+Layout::replaceCss("css/bootstrap/", "sub-theme/css/bootstrap/$theme.min.css");
+Layout::css("sub-theme/css/bootstrap/override/$theme-dynatron.css");

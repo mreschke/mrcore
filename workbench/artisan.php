@@ -12,4 +12,7 @@
 */
 
 #Artisan::add(new Mreschke\Mrcore4Legacy\Mrcore4Upgrade);
-#Artisan::resolve('App\Warehouse\EtlCommand');
+
+# Register App\Warehouse\EtlCommand
+App::register('App\Warehouse\WarehouseServiceProvider');
+Artisan::resolve('App\Warehouse\EtlCommand');

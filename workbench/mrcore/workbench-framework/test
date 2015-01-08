@@ -2,7 +2,14 @@
 
 workbench="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 mrcore="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd ../../../ && pwd )"
+<<<<<<< HEAD
+
+
+cd $mrcore
+phpunit $workbench
+=======
 file="$1"
 
 cd $mrcore
 phpunit "$workbench/$file"
+>>>>>>> 405d8223138f485bc6949cf73e31d63930300f62
