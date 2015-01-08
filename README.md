@@ -32,4 +32,4 @@ A Wiki/CMS built with an mreschke custom PHP framework.
 
 ### License
 
-The mrcore4 framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+The mrcore4 framework is open-sourced software licensed under the [MIT license](http://mreschke.com/license/mit)
