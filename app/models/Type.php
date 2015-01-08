@@ -16,6 +16,19 @@ class Type extends Eloquent {
 	 */
 	public $timestamps = false;
 
+	/**
+	 * Find a model by its primary key.  Mrcore cacheable eloquent override.
+	 *
+	 * @param  mixed  $id
+	 * @param  array  $columns
+	 * @return \Illuminate\Database\Eloquent\Model|static|null
+	 */
+	public static function find($id, $columns = array('*'))
+	{
+		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+			return parent::find($id, $columns);
+		});		
+	}
 
 	/*
 	 * Clear all cache
@@ -26,7 +39,6 @@ class Type extends Eloquent {
 		Cache::forget('types_id-name');
 		Cache::forget('types');
 	}
-
 
 	/**
 	 * Get all types
@@ -40,7 +52,6 @@ class Type extends Eloquent {
 			return Type::all();
 		});
 	}
-
 
 	/**
 	 * Get all types as array

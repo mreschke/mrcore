@@ -16,18 +16,6 @@ return array(
 
 	'debug' => getenv('debug'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Error Reporting
-    |--------------------------------------------------------------------------
-    |
-    | -1 is default, verbose, shows all errors and notices, for development
-    | 0 is quiet, no warnings or notices, for production
-    |
-    */
-
-    #error_reporting(0),
-
 	/*
 	|--------------------------------------------------------------------------
 	| Application URL

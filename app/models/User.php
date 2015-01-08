@@ -12,14 +12,12 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	 */
 	protected $table = 'users';
 
-
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
 	protected $hidden = array('password');
-
 
 	/**
 	 * Get the unique identifier for the user.
@@ -31,7 +29,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 		return $this->getKey();
 	}
 
-
 	/**
 	 * Get the password for the user.
 	 *
@@ -41,7 +38,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	{
 		return $this->password;
 	}
-
 
 	/**
 	 * Get the remember me token for the user.
@@ -53,7 +49,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	    return $this->remember_token;
 	}
 
-
 	/**
 	 * Set the remember me token for the user.
 	 *
@@ -62,7 +57,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	{
 	    $this->remember_token = $value;
 	}
-
 
 	/**
 	 * Get the remember me token name
@@ -74,12 +68,19 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	    return 'remember_token';
 	}
 
-
-/*	public function posts()
+	/**
+	 * Find a model by its primary key.  Mrcore cacheable eloquent override.
+	 *
+	 * @param  mixed  $id
+	 * @param  array  $columns
+	 * @return \Illuminate\Database\Eloquent\Model|static|null
+	 */
+	public static function find($id, $columns = array('*'))
 	{
-		return $this->hasMany('Post', 'created_by');
-	}*/
-
+		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+			return parent::find($id, $columns);
+		});		
+	}
 
 	/**
 	 * Login was a success, perform remaining login process
@@ -104,7 +105,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	    $this->save();
 	}
 
-
 	/**
 	 * Check if user is super admin
 	 *
@@ -114,7 +114,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	{
 		return Session::get('user.admin');
 	}
-
 
 	/**
 	 * This is my auth check function, do not use Auth::check()
@@ -126,7 +125,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 	{
 		return Auth::user()->id != Config::get('mrcore.anonymous');
 	}
-
 
 	/**
 	 * Get all roles linked to this user
@@ -144,7 +142,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 		#	echo $role->name;
 		#}
 	}
-
 
 	/**
 	 * Get permissions for this user (not post permissions)
@@ -177,7 +174,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 		return $perms;
 	}
 
-
 	/**
 	 * Check if user has this permission item (by permission constant)
 	 * Uses the Session::get('user.perms') array set at login
@@ -198,17 +194,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 		return false;
 	}
 
-
-    /**
-     * Many-to-many roles relationship
-     */
-    #public function roles()
-    #{
-	#	return $this->belongsToMany('Role', 'user_roles'); #Perfect!
-		#return $this->hasMany('UserRole');
-    #}
-
-
 	/**
 	 * Check if user has this role constant
 	 *
@@ -227,7 +212,6 @@ class User extends Eloquent implements UserInterface { #, RemindableInterface {
 		#}
 		#return false;
 	}
-
 
 	/**
 	 * Get the e-mail address where password reminders are sent.

@@ -44,22 +44,22 @@ class Post extends Eloquent {
 
 
 	/**
-	 * Eager loading posts.format_id to formats table
+	 * A post has one format
 	 * Usage: $post->format->name
 	 */
 	public function format()
 	{
-		return $this->belongsTo('Format');
+		return $this->hasOne('Format', 'id', 'format_id');
 	}
 
 
 	/**
-	 * Eager loading posts.type_id to types table
+	 * A post has one type
 	 * Usage: $post->type->constant
 	 */
 	public function type()
 	{
-		return $this->belongsTo('Type');
+		return $this->hasOne('Type', 'id', 'type_id');
 	}
 
 
@@ -102,7 +102,31 @@ class Post extends Eloquent {
 		return $this->belongsTo('User', 'updated_by');
 	}
 
+	/**
+	 * Find a model by its primary key.  Mrcore cacheable eloquent override.
+	 *
+	 * @param  mixed  $id
+	 * @param  array  $columns
+	 * @return \Illuminate\Database\Eloquent\Model|static|null
+	 */
+	public static function find($id, $columns = array('*'))
+	{
+		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+			return parent::find($id, $columns);
+		});		
+	}
 	
+	/**
+	 * Legacy alias to find now that find is cacheable
+	 *
+	 * @param int $id post ID
+	 * @return object of type post
+	 */
+	public static function get($id, $columns = array('*'))
+	{
+		return self::find($id);
+	}
+
 	/**
 	 * Decrypt $this->content
 	 */
@@ -146,20 +170,6 @@ class Post extends Eloquent {
 		} else {
 			return URL::route('permalink', array('id' => $postID));
 		}
-	}
-
-
-	/**
-	 * Get a single post by ID
-	 *
-	 * @param int $id post ID
-	 * @return object of type post
-	 */
-	public static function get($id)
-	{
-		return Mrcore\Cache::remember("post_$id", function() use($id) {
-			return Post::find($id);
-		});
 	}
 
 	/**

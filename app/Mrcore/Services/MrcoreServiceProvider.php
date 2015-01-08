@@ -134,8 +134,6 @@ class MrcoreServiceProvider extends ServiceProvider
 			require base_path().'/workbench/config.php';
 			require base_path().'/workbench/register.php';
 
-
-
 			
 			#Mrcore::post()->setGlobal(
 			#	\Post::get(\Config::get('mrcore.global'))
