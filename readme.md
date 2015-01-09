@@ -1,6 +1,6 @@
 # Mrcore6
 
-A Wiki/CMS System built with Laravel.
+A Wiki/CMS built with Laravel 5
 
 See http://mrcore.mreschke.com for details and documentation.
 

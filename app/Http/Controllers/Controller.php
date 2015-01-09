@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Mrcore\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesCommands;
 use Illuminate\Routing\Controller as BaseController;

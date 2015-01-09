@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace Mrcore\Http\Controllers;
 
 class WelcomeController extends Controller {
 
@@ -20,7 +20,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		#$this->middleware('guest');
 	}
 
 	/**
