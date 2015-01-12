@@ -30,7 +30,7 @@ $app = new Illuminate\Foundation\Application;
 #	return getenv('APP_ENV') ?: 'local';
 #});
 $env = $app->detectEnvironment(array(
-	'local' => array('lindev'),
+	'local' => array('homestead'),
 ));
 /*$env = $app->detectEnvironment(function ()
 {

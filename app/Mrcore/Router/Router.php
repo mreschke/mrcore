@@ -81,14 +81,14 @@ class Router implements RouterInterface
 			return;
 		}
 
+		$firstSegment = strtolower($segments[0]);
+		$secondSegment = count($segments) >= 2 ? $segments[1] : '';
+
 		// Check if reserved path
-		if (in_array($path, $reserved)) {
+		if (in_array($firstSegment, $reserved)) {
 			$this->responseCode = 202;
 			return;
 		}
-
-		$firstSegment = strtolower($segments[0]);
-		$secondSegment = count($segments) >= 2 ? $segments[1] : '';
 
 		// Url is /42/anything
 		if (is_numeric($firstSegment)) {
