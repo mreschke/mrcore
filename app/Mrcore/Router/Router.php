@@ -16,7 +16,6 @@ class Router implements RouterInterface
 		$this->analyzeUrl();
 	}
 
-
 	/**
 	 * Was a valid route found from current url upon instantiation
 	 * @return bool
@@ -25,7 +24,6 @@ class Router implements RouterInterface
 	{
 		return ($this->responseCode == 200);
 	}
-
 
 	/**
 	 * Get the current urls route
@@ -36,7 +34,6 @@ class Router implements RouterInterface
 		return $this->route;
 	}
 
-
 	/**
 	 * Get the route by post id
 	 * @param  int $id
@@ -46,7 +43,6 @@ class Router implements RouterInterface
 	{
 		return \Router::byPost($id);
 	}
-
 
 	/**
 	 * Get route by examining the current url
@@ -81,14 +77,14 @@ class Router implements RouterInterface
 			return;
 		}
 
+		$firstSegment = strtolower($segments[0]);
+		$secondSegment = count($segments) >= 2 ? $segments[1] : '';
+
 		// Check if reserved path
-		if (in_array($path, $reserved)) {
+		if (in_array($firstSegment, $reserved)) {
 			$this->responseCode = 202;
 			return;
 		}
-
-		$firstSegment = strtolower($segments[0]);
-		$secondSegment = count($segments) >= 2 ? $segments[1] : '';
 
 		// Url is /42/anything
 		if (is_numeric($firstSegment)) {

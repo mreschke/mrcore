@@ -12,10 +12,12 @@ return array(
 	| attempting to get access to protected areas of your application.
 	|
 	| Supported: "database", "eloquent"
+	| mReschke Addition: eloquentCached
 	|
 	*/
 
-	'driver' => 'eloquent',
+	#'driver' => 'eloquent', #default
+	'driver' => 'eloquentCached',
 
 	/*
 	|--------------------------------------------------------------------------
