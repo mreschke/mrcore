@@ -16,7 +16,6 @@ class Router implements RouterInterface
 		$this->analyzeUrl();
 	}
 
-
 	/**
 	 * Was a valid route found from current url upon instantiation
 	 * @return bool
@@ -25,7 +24,6 @@ class Router implements RouterInterface
 	{
 		return ($this->responseCode == 200);
 	}
-
 
 	/**
 	 * Get the current urls route
@@ -36,7 +34,6 @@ class Router implements RouterInterface
 		return $this->route;
 	}
 
-
 	/**
 	 * Get the route by post id
 	 * @param  int $id
@@ -46,7 +43,6 @@ class Router implements RouterInterface
 	{
 		return \Router::byPost($id);
 	}
-
 
 	/**
 	 * Get route by examining the current url
