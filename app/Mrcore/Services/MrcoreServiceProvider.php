@@ -79,6 +79,12 @@ class MrcoreServiceProvider extends ServiceProvider
 	{
 		\Lifecycle::add(__FILE__.' - '.__FUNCTION__);
 
+		// mReschke Custom auth driver (standard eloquent + cache)
+		\Auth::extend('eloquentCached', function ($app) {
+			$model = $app['config']['auth.model'];
+			return new \Mrcore\Auth\CachedEloquentUserProvider($app['hash'], $model);
+		});
+
 		// Detect if using webdav url
 		$isWebdav = preg_match("|".Config::get('mrcore.webdav_base_url')."|i", Request::url());
 
