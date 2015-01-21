@@ -6,8 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
-	<!-- Bootstrap -->
-	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/app.css" rel="stylesheet">
 
 	<!-- Fonts -->
