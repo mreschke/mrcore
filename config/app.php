@@ -144,7 +144,7 @@ return [
 		'Mrcore\Providers\ConfigServiceProvider',
 		'Mrcore\Providers\EventServiceProvider',
 		'Mrcore\Providers\RouteServiceProvider',
-		#'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 	],
 
 	/*

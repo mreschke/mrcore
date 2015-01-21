@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Http\Controllers;
 
+use Illuminate\Contracts\Container\Container;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -28,9 +30,12 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Container $app)
 	{
-		return view('welcome');
+		#$x = app();
+		dd($app->make('postId'));
+		dd($app);
+		#return view('welcome');
 	}
 
 }
