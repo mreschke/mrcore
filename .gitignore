@@ -1,5 +1,6 @@
 # Mrcore Exclusions
 /files/*
+!/files/snippets
 web/admin/indexer_log.html
 /config/config.php
 /web/image/*

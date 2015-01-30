@@ -14,10 +14,10 @@ class Config {
 	const DB_PASS = 'password';
 	const DEBUG = false;
 	const USE_PAGE_EXTENSIONS = false;
-	const WEB_BASE_URL = '//mrcore4.example.com';
-	const WEB_BASE_IMAGE_URL = '//mrcore4.example.com'; //for parallel and cookieless domain optimizations
-	const WEB_BASE_CSS_URL = '//dev.mrcore4.mreschke.net'; //for parallel and cookieless domain optimizations
-	const WEB_BASE_JS_URL = '//dev.mrcore4.mreschke.net'; //for parallel and cookieless domain optimizations
+	const WEB_BASE_URL = '//mrcore4.mreschke.net';
+	const WEB_BASE_IMAGE_URL = '//mrcore4.mreschke.net'; //for parallel and cookieless domain optimizations
+	const WEB_BASE_CSS_URL = '//mrcore4.mreschke.net'; //for parallel and cookieless domain optimizations
+	const WEB_BASE_JS_URL = '//mrcore4.mreschke.net'; //for parallel and cookieless domain optimizations
 	const WEB_HOST = 'mreschke.net';
 	const WEB_BASE = '/';
 	const ABS_BASE = '/var/www/mrcore4';
