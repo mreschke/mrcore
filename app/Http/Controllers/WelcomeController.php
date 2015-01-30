@@ -33,9 +33,9 @@ class WelcomeController extends Controller {
 	public function index(Container $app)
 	{
 		#$x = app();
-		dd($app->make('postId'));
-		dd($app);
-		#return view('welcome');
+		#dd($app->make('postId'));
+		#dd($app);
+		return view('welcome');
 	}
 
 }

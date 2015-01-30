@@ -17,8 +17,9 @@
 # Common Exclusions
 /bootstrap/compiled.php
 vendor
-composer.phar
-composer.lock
+node_modules
+#composer.phar
+#composer.lock #should be in git?
 .env
 /.local
 .DS_Store

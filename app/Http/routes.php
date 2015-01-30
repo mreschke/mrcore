@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function() {
 
-Route::get('home', 'HomeController@index');
+	$users = \DB::table('user')->where('user', 'root')->first();
+	echo $users->User;
+	#var_dump($users);
+	#return "hello world";
+});
+
+#Route::get('/', 'WelcomeController@index');
+
+#Route::get('home', 'HomeController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
