@@ -12,7 +12,10 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'Mrcore\Console\Commands\Inspire',
+		'Mrcore\Console\Commands\IndexPosts',
+		'Illuminate\Workbench\Console\WorkbenchMakeCommand',
 	];
+	#??Artisan::add(new Mrcore\WorkbenchFramework\Install);
 
 	/**
 	 * Define the application's command schedule.

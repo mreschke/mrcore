@@ -46,11 +46,11 @@ return [
 
 	'connections' => [
 
-		'sqlite' => [
-			'driver'   => 'sqlite',
-			'database' => storage_path().'/database.sqlite',
-			'prefix'   => '',
-		],
+		#'sqlite' => [
+		#	'driver'   => 'sqlite',
+		#	'database' => storage_path().'/database.sqlite',
+		#	'prefix'   => '',
+		#],
 
 		'mysql' => [
 			'driver'    => 'mysql',
@@ -62,27 +62,28 @@ return [
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 			'strict'    => false,
+			//'options'   => array(PDO::MYSQL_ATTR_MAX_BUFFER_SIZE => 32 * 1024 * 1024),
 		],
 
-		'pgsql' => [
-			'driver'   => 'pgsql',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'forge'),
-			'username' => env('DB_USERNAME', 'forge'),
-			'password' => env('DB_PASSWORD', ''),
-			'charset'  => 'utf8',
-			'prefix'   => '',
-			'schema'   => 'public',
-		],
+		#'pgsql' => [
+		#	'driver'   => 'pgsql',
+		#	'host'     => env('DB_HOST', 'localhost'),
+		#	'database' => env('DB_DATABASE', 'forge'),
+		#	'username' => env('DB_USERNAME', 'forge'),
+		#	'password' => env('DB_PASSWORD', ''),
+		#	'charset'  => 'utf8',
+		#	'prefix'   => '',
+		#	'schema'   => 'public',
+		#],
 
-		'sqlsrv' => [
-			'driver'   => 'sqlsrv',
-			'host'     => env('DB_HOST', 'localhost'),
-			'database' => env('DB_DATABASE', 'forge'),
-			'username' => env('DB_USERNAME', 'forge'),
-			'password' => env('DB_PASSWORD', ''),
-			'prefix'   => '',
-		],
+		#'sqlsrv' => [
+		#	'driver'   => 'sqlsrv',
+		#	'host'     => env('DB_HOST', 'localhost'),
+		#	'database' => env('DB_DATABASE', 'forge'),
+		#	'username' => env('DB_USERNAME', 'forge'),
+		#	'password' => env('DB_PASSWORD', ''),
+		#	'prefix'   => '',
+		#],
 
 	],
 
@@ -115,9 +116,9 @@ return [
 		'cluster' => false,
 
 		'default' => [
-			'host'     => '127.0.0.1',
+			'host'     => env('DB_REDIS_HOST', '127.0.0.1'),
 			'port'     => 6379,
-			'database' => 0,
+			'database' => env('DB_REDIS_DATABASE', 0),
 		],
 
 	],

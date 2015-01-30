@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(-1); #-1 dev, 0 prod
+
 return [
 
 	/*
@@ -14,7 +16,7 @@ return [
 	*/
 
 	'debug' => env('APP_DEBUG'),
-
+	
 	/*
 	|--------------------------------------------------------------------------
 	| Application URL
@@ -26,7 +28,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => env('APP_URL', 'http://localhost'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +41,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Chicago',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +82,7 @@ return [
 
 	'key' => env('APP_KEY', 'SomeRandomString'),
 
-	'cipher' => MCRYPT_RIJNDAEL_128,
+	'cipher' => env('APP_CIPHER', MCRYPT_RIJNDAEL_128),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,6 +137,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -145,6 +148,16 @@ return [
 		'Mrcore\Providers\EventServiceProvider',
 		'Mrcore\Providers\RouteServiceProvider',
 		#'Barryvdh\Debugbar\ServiceProvider',
+
+		/*
+		 * Mrcore Specific Service Providers...
+		 */
+		'Mrcore\Providers\MrcoreServiceProvider',
+		'Mrcore\Providers\RouterServiceProvider',
+		'Mrcore\Providers\WorkbenchServiceProvider',
+		'Mrcore\Providers\LayoutServiceProvider',
+		'Mrcore\Providers\UrlServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +205,15 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'Html'      => 'Illuminate\Html\HtmlFacade',
+
+		/*
+		 * Mrcore Specific Aliases...
+		 */
+		'Mrcore'          => 'Mrcore\Facades\Mrcore',
+		'Layout'          => 'Mrcore\Facades\Layout',
+		'Workbench'       => 'Mrcore\Facades\Workbench',
 
 	],
 

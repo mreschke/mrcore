@@ -14,7 +14,17 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		// Order is Critical
+		$this->call('UserSeeder');
+		$this->call('PostItemsSeeder');
+		$this->call('PostSeeder');
+		$this->call('RoleSeeder');
+		$this->call('PermissionSeeder');
+		$this->call('UserPermissionSeeder');
+		$this->call('PostPermissionSeeder');
+		$this->call('BadgeSeeder');
+		$this->call('TagSeeder');
+		$this->call('RouterSeeder');
 	}
 
 }

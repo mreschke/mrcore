@@ -1,0 +1,45 @@
+<?php namespace Theme\DefaultTheme;
+
+use Mrcore\Providers\ServiceProvider;
+
+class DefaultThemeServiceProvider extends ServiceProvider {
+
+	/**
+	 * Indicates if loading of the provider is deferred.
+	 *
+	 * @var bool
+	 */
+	protected $defer = false;
+
+	/**
+	 * Bootstrap the application events.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		$this->package('theme/default-theme');
+	}
+
+	/**
+	 * Register the service provider.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+        // Register theme view location
+        \View::addLocation(base_path()."/workbench/theme/default-theme/src/views/");
+	}
+
+	/**
+	 * Get the services provided by the provider.
+	 *
+	 * @return array
+	 */
+	public function provides()
+	{
+		return array();
+	}
+
+}
