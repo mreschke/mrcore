@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(-1); #-1 dev, 0 prod
-
 return [
 
 	/*
@@ -138,6 +136,7 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
+		'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -152,11 +151,11 @@ return [
 		/*
 		 * Mrcore Specific Service Providers...
 		 */
-		'Mrcore\Providers\MrcoreServiceProvider',
-		'Mrcore\Providers\RouterServiceProvider',
-		'Mrcore\Providers\WorkbenchServiceProvider',
-		'Mrcore\Providers\LayoutServiceProvider',
-		'Mrcore\Providers\UrlServiceProvider',
+		#'Mrcore\Providers\MrcoreServiceProvider',
+		#'Mrcore\Providers\RouterServiceProvider',
+		#'Mrcore\Providers\WorkbenchServiceProvider',
+		#'Mrcore\Providers\LayoutServiceProvider',
+		#'Mrcore\Providers\UrlServiceProvider',
 
 	],
 
@@ -213,7 +212,7 @@ return [
 		 */
 		'Mrcore'          => 'Mrcore\Facades\Mrcore',
 		'Layout'          => 'Mrcore\Facades\Layout',
-		'Workbench'       => 'Mrcore\Facades\Workbench',
+		#'Workbench'       => 'Mrcore\Facades\Workbench',
 
 	],
 

@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Badge extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Badge extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class Badge extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -48,7 +51,7 @@ class Badge extends Eloquent
 	 */
 	public static function getAll()
 	{
-		return Mrcore\Cache::remember("badges", function()
+		return Cache::remember("badges", function()
 		{
 			return Badge::orderBy('name')->get();
 		});
@@ -68,7 +71,7 @@ class Badge extends Eloquent
 
 		//Only cache if using default id/name
 		if ($keyField == 'id' && $valueField == 'name') {
-			return Mrcore\Cache::remember("badges_$keyField-$valueField", $function);
+			return Cache::remember("badges_$keyField-$valueField", $function);
 		} else {
 			return $function;
 		}

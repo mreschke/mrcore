@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Router extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Router extends Model
 {
 
 	/**
@@ -27,7 +30,7 @@ class Router extends Eloquent
 	 */
 	public static function findDefault($id)
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_default_$id", function() use($id) {
+		return Cache::remember(strtolower(get_class())."_default_$id", function() use($id) {
 			return Router::where('id', $id)
 				->where('default', true)
 				->where('disabled', false)
@@ -42,7 +45,7 @@ class Router extends Eloquent
 	 */
 	public static function findDefaultByPost($postID)
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_default_post_$postID", function() use($postID) {
+		return Cache::remember(strtolower(get_class())."_default_post_$postID", function() use($postID) {
 			return Router::where('post_id', $postID)
 				->where('default', true)
 				->where('disabled', false)
@@ -66,7 +69,7 @@ class Router extends Eloquent
 	 */
 	public static function bySlug($slug)
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_static_$slug", function() use($slug) {
+		return Cache::remember(strtolower(get_class())."_static_$slug", function() use($slug) {
 			return Router::where('slug', $slug)
 				->where('disabled', false)
 				->where('static', true)

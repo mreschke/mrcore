@@ -1,4 +1,9 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
+
+use View;
+use Config;
+use Request;
+use Response;
 
 class AdminController extends Controller {
 

@@ -1,5 +1,10 @@
-<?php
+<?php namespace Mrcore\Models;
 
+use DB;
+use Auth;
+use Config;
+use Session;
+use Mrcore\Support\Cache;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -83,7 +88,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -112,13 +117,33 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	/**
+	 * Get current logged in user
+	 * @return Mrcore\Models\User
+	 */
+	public static function currentUserTEST()
+	{
+		if (Auth::check()) {
+			return Auth::user();
+		} else {
+			$user = User::find(Config::get('mrcore.anonymous'));
+			Auth::login($user);
+			Auth::user()->login();			
+			#return self::find(Config::get('mrcore.anonymous'));
+			return Auth::user();
+		}
+	}
+
+	/**
 	 * Check if user is super admin
 	 *
 	 * @return boolean
 	 */
 	public static function isAdmin()
 	{
-		return Session::get('user.admin');
+		if (Auth::check()) {
+			return Session::get('user.admin');
+		}
+		return false;
 	}
 
 	/**
@@ -129,7 +154,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public static function isAuthenticated()
 	{
-		return Auth::user()->id != Config::get('mrcore.anonymous');
+		$user = Auth::user();
+		if (isset($user)) {
+			return $user->id != Config::get('mrcore.anonymous');
+		}
+		return false;
+		#return Auth::check();
 	}
 
 	/**

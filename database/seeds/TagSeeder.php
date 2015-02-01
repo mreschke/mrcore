@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\Tag;
+use Mrcore\Models\PostTag;
+
 class TagSeeder extends Seeder
 {
 	public function run()

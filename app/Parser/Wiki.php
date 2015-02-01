@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Parser;
 
+use Mrcore\Models\Post;
+
 Class Wiki
 {
 	public $userID;
@@ -32,9 +34,9 @@ Class Wiki
 		//Tokens[0][] is all <php></php> items pulled out, each one is replaced with a [php x] where x is the occurance integer
 		$this->tokens = array();
 
-		#$data = $this->preParse($data);
-		#$data = $this->wikiParse($data);
-		#$data = $this->postParse($data);
+		$data = $this->preParse($data);
+		$data = $this->wikiParse($data);
+		$data = $this->postParse($data);
 
 		return $data;
 		
@@ -282,7 +284,7 @@ Class Wiki
 		if (!is_numeric($id)) return null;
 		if ($id == $this->postID) return null;
 
-		$post = \Post::get($id);
+		$post = Post::get($id);
 		if (!isset($post)) return null;
 		if (!$post->hasPermission('read')) return null;
 
@@ -325,7 +327,7 @@ Class Wiki
 		// Initialize Text_Wiki object with the default rule set
 		$wiki = new \Text_Wiki();
 		$baseURL = "/";
-		$posts = \Post::allArray();
+		$posts = Post::allArray();
 	   
 		// Enable rules
 		#$wiki->enableRule('embed');
@@ -598,14 +600,4 @@ Class Wiki
 		}
 	}
 
-
-	/**
-	 * Test proper class instantiation
-	 *
-	 * @return Hello World success text string
-	 */
-	public static function test()
-	{
-		return "Hello World from ".get_class();
-	}
 }

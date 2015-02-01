@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Helpers\String;
+use Mrcore\Models\Post;
+use Mrcore\Models\Router;
+use Mrcore\Helpers\Crypt;
+
 class PostSeeder extends Seeder
 {
 	public function run()
@@ -10,15 +16,15 @@ class PostSeeder extends Seeder
 		#1 Home
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Home',
 			'slug' => 'home',
-			'content' =>  Mrcore\Crypt::encrypt("<div class='jumbotron'>
+			'content' =>  Crypt::encrypt("<div class='jumbotron'>
 	<h1>Welcome to mRcore</h1>
 	<p>A Wiki/CMS system built with Laravel</p>
 	<p><a class='btn btn-primary btn-lg' onclick=\"window.location='/search'\"><i class='fa fa-search'></i> Browse Posts</a></p>
 </div>"),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => true,
 			'format_id' => 4,#html
@@ -39,11 +45,11 @@ class PostSeeder extends Seeder
 		#2 mRcore Global
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'mRcore Global',
 			'slug' => 'mrcore-global',
-			'content' =>  Mrcore\Crypt::encrypt(''),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'content' =>  Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 3,#phpw
@@ -64,10 +70,10 @@ class PostSeeder extends Seeder
 		#3 Admin Home
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Admin Home Page',
 			'slug' => 'admin-home-page',
-			'content' =>  Mrcore\Crypt::encrypt('<info>
+			'content' =>  Crypt::encrypt('<info>
 [[toc]]
 </info>
 
@@ -76,7 +82,7 @@ This is the home page of the admin user.
 
 Every user of mrcore has a dedicated home page and a dedicated user global page.
 '),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 1,#wiki
@@ -97,11 +103,11 @@ Every user of mrcore has a dedicated home page and a dedicated user global page.
 		#4 Admin Global
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Admin Global',
 			'slug' => 'admin-global',
-			'content' =>  Mrcore\Crypt::encrypt(''),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'content' =>  Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 7,#htmlw
@@ -122,10 +128,10 @@ Every user of mrcore has a dedicated home page and a dedicated user global page.
 		#5 mRcore Workbench
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'mRcore Workbench',
 			'slug' => 'mrcore-workbench',
-			'content' =>  Mrcore\Crypt::encrypt('<info>
+			'content' =>  Crypt::encrypt('<info>
 [[toc]]
 </info>
 
@@ -134,7 +140,7 @@ Every user of mrcore has a dedicated home page and a dedicated user global page.
 This is the mrcore workbench post.  All actual workbench code is symlinked to this post.  You can use this post to keep documentation about your custom workbenches.
 
 See http://mrcore.mreschke.com/doc/advanced/workbench for more info in workbenches.'),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 1,#wiki
@@ -154,11 +160,11 @@ See http://mrcore.mreschke.com/doc/advanced/workbench for more info in workbench
 		#6 User Info
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'User Info',
 			'slug' => 'user-info',
-			'content' =>  Mrcore\Crypt::encrypt(''),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'content' =>  Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 7,#htmlw
@@ -179,10 +185,10 @@ See http://mrcore.mreschke.com/doc/advanced/workbench for more info in workbench
 		#7 Search Box
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Search Box',
 			'slug' => 'search-box',
-			'content' =>  Mrcore\Crypt::encrypt('<?php
+			'content' =>  Crypt::encrypt('<?php
 $badges = Badge::all();
 
 $admin = array(
@@ -265,7 +271,7 @@ $private = array ();
 		<? endif ?>
 	</div>
 </div>'),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => true,
 			'contains_html' => true,
 			'format_id' => 2,#php
@@ -286,17 +292,17 @@ $private = array ();
 		#8 Default Document Template
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Default Document Template',
 			'slug' => 'default-document-template',
-			'content' =>  Mrcore\Crypt::encrypt('<info>
+			'content' =>  Crypt::encrypt('<info>
 [[toc]]
 </info>
 
 + Summary
 
 New Document'),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 1,#wiki
@@ -317,11 +323,11 @@ New Document'),
 		#9 Default Page Template
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Default Page Template',
 			'slug' => 'default-page-template',
-			'content' =>  Mrcore\Crypt::encrypt(''),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'content' =>  Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => false,
 			'contains_html' => false,
 			'format_id' => 1,#wiki
@@ -342,11 +348,11 @@ New Document'),
 		#10 Default App Template
 		#---------------------------------------------------------------
 		Post::create(array(
-			'uuid' => \Mrcore\Helpers\String::getGuid(),
+			'uuid' => String::getGuid(),
 			'title' => 'Default App Template',
 			'slug' => 'default-app-template',
-			'content' =>  Mrcore\Crypt::encrypt(''),
-			'teaser' => Mrcore\Crypt::encrypt(''),
+			'content' =>  Crypt::encrypt(''),
+			'teaser' => Crypt::encrypt(''),
 			'contains_script' => true,
 			'contains_html' => true,
 			'format_id' => 2,#php

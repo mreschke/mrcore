@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Framework extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Framework extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class Framework extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -38,7 +41,7 @@ class Framework extends Eloquent
 	 */
 	public static function allArray($keyField = 'id', $valueField = 'name')
 	{
-		return Mrcore\Cache::remember("frameworks_$keyField-$valueField", function() use($keyField, $valueField)
+		return Cache::remember("frameworks_$keyField-$valueField", function() use($keyField, $valueField)
 		{
 			return Framework::all()->lists($valueField, $keyField);
 		});

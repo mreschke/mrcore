@@ -1,11 +1,13 @@
 <?php namespace Mrcore\Mrcore;
 
+use Config as ConfigFacade;
+
 class Config implements ConfigInterface
 {
 
 	public function host()
 	{
-		return \Config::get('mrcore.host');	
+		return ConfigFacade::get('mrcore.host');	
 	}
 
 	public function base()
@@ -15,17 +17,17 @@ class Config implements ConfigInterface
 
 	public function baseUrl()
 	{
-		return \Config::get('mrcore.base_url');
+		return ConfigFacade::get('mrcore.base_url');
 	}
 
 	public function files()
 	{
-		return \Config::get('mrcore.files');
+		return ConfigFacade::get('mrcore.files');
 	}
 
 	public function filesBaseUrl()
 	{
-		return \Config::get('mrcore.file_base_url');
+		return ConfigFacade::get('mrcore.file_base_url');
 	}
 
 }

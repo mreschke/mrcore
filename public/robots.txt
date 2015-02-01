@@ -1,1 +1,2 @@
-../workbench/theme/current-theme/public/robots.txt
+User-agent: *
+Disallow: 

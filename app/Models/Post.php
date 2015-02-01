@@ -1,6 +1,18 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Post extends Eloquent
+use DB;
+use URL;
+use Auth;
+use Config;
+use Mrcore\Models\User;
+use Mrcore\Support\Cache;
+use Mrcore\Support\Crypt;
+use Illuminate\Database\Eloquent\Model;
+use Input;
+use Session;
+use Mrcore\Support\String;
+
+class Post extends Model
 {
 
 	/**
@@ -30,7 +42,7 @@ class Post extends Eloquent
 	 */
 	public function badges()
 	{
-		return $this->belongsToMany('Badge', 'post_badges');
+		return $this->belongsToMany('Mrcore\Models\Badge', 'post_badges');
 	}
 
 
@@ -40,7 +52,7 @@ class Post extends Eloquent
 	 */
 	public function tags()
 	{
-		return $this->belongsToMany('Tag', 'post_tags');
+		return $this->belongsToMany('Mrcore\Models\Tag', 'post_tags');
 	}
 
 
@@ -50,7 +62,7 @@ class Post extends Eloquent
 	 */
 	public function format()
 	{
-		return $this->hasOne('Format', 'id', 'format_id');
+		return $this->hasOne('Mrcore\Models\Format', 'id', 'format_id');
 	}
 
 
@@ -60,7 +72,7 @@ class Post extends Eloquent
 	 */
 	public function type()
 	{
-		return $this->hasOne('Type', 'id', 'type_id');
+		return $this->hasOne('Mrcore\Models\Type', 'id', 'type_id');
 	}
 
 
@@ -70,7 +82,7 @@ class Post extends Eloquent
 	 */
 	public function framework()
 	{
-		return $this->belongsTo('Framework');
+		return $this->belongsTo('Mrcore\Models\Framework');
 	}
 
 
@@ -80,7 +92,7 @@ class Post extends Eloquent
 	 */
 	public function mode()
 	{
-		return $this->belongsTo('Mode');
+		return $this->belongsTo('Mrcore\Models\Mode');
 	}
 
 
@@ -90,7 +102,7 @@ class Post extends Eloquent
 	 */
 	public function creator()
 	{
-		return $this->belongsTo('User', 'created_by');
+		return $this->belongsTo('Mrcore\Models\User', 'created_by');
 	}
 
 
@@ -100,7 +112,7 @@ class Post extends Eloquent
 	 */
 	public function updater()
 	{
-		return $this->belongsTo('User', 'updated_by');
+		return $this->belongsTo('Mrcore\Models\User', 'updated_by');
 	}
 
 	/**
@@ -112,7 +124,7 @@ class Post extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -133,7 +145,7 @@ class Post extends Eloquent
 	 */
 	public function decrypt()
 	{
-		$this->content = Mrcore\Crypt::decrypt($this->content);
+		$this->content = Crypt::decrypt($this->content);
 		$this->decrypted = true;
 	}
 
@@ -143,7 +155,7 @@ class Post extends Eloquent
 	 */
 	public function encrypt()
 	{
-		$this->content = Mrcore\Crypt::encrypt($this->content);
+		$this->content = Crypt::encrypt($this->content);
 		$this->decrypted = false;
 	}
 
@@ -181,7 +193,7 @@ class Post extends Eloquent
 	 */
 	public static function allArray()
 	{
-		return Mrcore\Cache::remember("posts_array", function() 
+		return Cache::remember("posts_array", function() 
 		{
 			return Post::where('deleted', false)->get()->lists('id', 'title');
 		});
@@ -266,9 +278,9 @@ class Post extends Eloquent
 
 		if ($includeGlobals) {
 			// Add User Global Content
-			if (isset(\Auth::user()->global_post_id)) {
-				if ($this->id != \Auth::user()->global_post_id) {
-					$userGlobal = \Post::get(\Auth::user()->global_post_id);
+			if (isset(Auth::user()->global_post_id)) {
+				if ($this->id != Auth::user()->global_post_id) {
+					$userGlobal = Post::get(Auth::user()->global_post_id);
 					if (isset($userGlobal)) {
 						$userGlobal->parse();
 						$this->content = $userGlobal->content . $this->content;
@@ -277,9 +289,9 @@ class Post extends Eloquent
 			}
 
 			// Add Site Global Content
-			if (\Config::get('mrcore.global') > 0) {
-				if ($this->id != \Config::get('mrcore.global')) {
-					$global = \Post::get(\Config::get('mrcore.global'));
+			if (Config::get('mrcore.global') > 0) {
+				if ($this->id != Config::get('mrcore.global')) {
+					$global = Post::get(Config::get('mrcore.global'));
 					if (isset($global)) {
 						$global->parse();
 						$this->content = $global->content . $this->content;
@@ -577,7 +589,7 @@ class Post extends Eloquent
 			$this->permissions = array();
 		} else {
 			
-			// OH crap, problams with this idea and unit testing
+			// OH crap, problems with this idea and unit testing
 			// because in the web, requests run in issolation, so all classes are new
 			// but in a unit test classes are in the same memory space, so this $post class
 			// persists across each unit test :(, so $this->permissions is set once and then never
@@ -702,20 +714,20 @@ class Post extends Eloquent
 	{
 		if ($this->hasPermission('read')) return true;
 
-		if (\Input::has('uuid') && $this->shared) {
-			$uuid = \Input::get('uuid');
-			if (strlen($uuid) == 32) $uuid = \Mreschke\Helpers\String::uuidToGuid($uuid);
+		if (Input::has('uuid') && $this->shared) {
+			$uuid = Input::get('uuid');
+			if (strlen($uuid) == 32) $uuid = String::uuidToGuid($uuid);
 			if (strtolower($uuid) == strtolower($this->uuid)) {
 				// UUID match and public sharing url enabled
-				$uuids = \Session::get('uuids');
+				$uuids = Session::get('uuids');
 				$uuids = array_add($uuids, $uuid, true); #adds only if not exist
-				\Session::set('uuids', $uuids);
+				Session::set('uuids', $uuids);
 				return true;
 			} else {
 				// Wrong UUID
 				return false;
 			}
-		} elseif (isset(\Session::get('uuids')[$this->uuid]) && $this->shared) {
+		} elseif (isset(Session::get('uuids')[$this->uuid]) && $this->shared) {
 			// UUID found in session of previously used UUIDS, allow access
 			return true;
 		} else {

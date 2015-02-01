@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\PostPermission;
+
 class PostPermissionSeeder extends Seeder
 {
 	public function run()

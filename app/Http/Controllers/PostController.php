@@ -1,4 +1,14 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
+
+use View;
+use Input;
+use Layout;
+use Mrcore;
+use Request;
+use Response;
+use Mrcore\Models\Post;
+use Mrcore\Models\Revision;
+
 class PostController extends Controller {
 
 	/**
@@ -8,7 +18,8 @@ class PostController extends Controller {
 	 */
 	public function showPost()
 	{
-		$router = Mrcore::router();
+
+		/*$router = Mrcore::router();
 		if (isset($router)) {
 			if ($router->responseCode == 404) {
 				return Response::notFound();
@@ -16,38 +27,45 @@ class PostController extends Controller {
 				return Response::denied();
 			} elseif ($router->responseCode == 301) {
 				// Redirect to proper url
-				if (is_array($router->responseRedirect)) {
-					$url = route(
-						$router->responseRedirect['route'],
-						$router->responseRedirect['params']
-					);
-					$url .= $router->responseRedirect['query'];
-				} else {
-					$url = $router->responseRedirect;
-				}
+				$url = $router->responseRedirect;
+				#if (is_array($router->responseRedirect)) {
+					#$url = route(
+					#	$router->responseRedirect['route'],
+					#	$router->responseRedirect['params']
+					#);
+					#$url .= $router->responseRedirect['query'];
+				#} else {
+				#	$url = $router->responseRedirect;
+				#}
 				return Redirect::to($url);
 			}
 		}
+		*/
 
 		# Gets post, parse + globals
 		# If ajax, do NOT include globals
-		$post = \Mrcore::post()->prepare(!Request::ajax());
+		$post = Mrcore::post()->prepare(!Request::ajax());
+
+
+		#echo "PostController HERE!<br />";
+		#echo "Auth Check: ".\Auth::check()."<br />";
+		#echo "Session: ".var_dump(\Session::all())."<br />";
+		#echo "Post: ".var_dump($post)."<br />";
+		#return;
+
 
 		// If post is a workbench and we get to this point then
 		// The custom workbench route was not found, meaning we
 		// want to return 404 for this url
-		if ($post->workbench) {
-			return Response::notFound();
-		}
+		#if ($post->workbench) {
+		#	return Response::notFound();
+		#}
 
 		# Set bootstrap container based on post type
 		if ($post->type->constant == 'app') {
 			// Apps have no container (full screen), all others are system default
 			Layout::container(false);
 		}
-
-		#TEMP, should be set in layout as view:share
-		$container = Layout::container();
 
 		// Show Post View
 		$content = View::make('post.show', compact(
@@ -186,7 +204,7 @@ class PostController extends Controller {
 
 		$postID = Input::get('postID');
 		$userID = Input::get('userID');
-		if ($postID > 0 && $userID > 0 && User::isAuthenticated()) {
+		if ($postID > 0 && $userID > 0 && Mrcore::user()->isAuthenticated()) {
 			$post = Post::get($postID);
 			if (isset($post)) {
 				if ($post->hasPermission('write')) {

@@ -1,4 +1,4 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
 
 class UserController extends Controller {
 

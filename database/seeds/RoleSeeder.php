@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\Role;
+use Mrcore\Models\UserRole;
+
 class RoleSeeder extends Seeder
 {
 	public function run()

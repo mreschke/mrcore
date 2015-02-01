@@ -1,4 +1,30 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
+
+use View;
+use Cache;
+use Input;
+use Config;
+use Layout;
+use Request;
+use Response;
+use Carbon\Carbon;
+use Mrcore\Models\Tag;
+use Mrcore\Models\Mode;
+use Mrcore\Models\Post;
+use Mrcore\Models\Role;
+use Mrcore\Models\Type;
+use Mrcore\Models\Badge;
+use Mrcore\Support\Crypt;
+use Mrcore\Models\Format;
+use Mrcore\Models\Router;
+use Mrcore\Models\Hashtag;
+use Mrcore\Models\PostTag;
+use Mrcore\Support\String;
+use Mrcore\Models\Revision;
+use Mrcore\Models\PostBadge;
+use Mrcore\Models\Permission;
+use Mrcore\Models\PostPermission;
+
 
 class EditController extends Controller {
 
@@ -18,7 +44,7 @@ class EditController extends Controller {
 
 
 		// Decrypt content
-		$post->content = Mrcore\Crypt::decrypt($post->content);
+		$post->content = Crypt::decrypt($post->content);
 
 		// Check for uncommited revisions
 		$uncommitted = Revision::where('post_id', '=', $id)->where('revision', '=', 0)->get();
@@ -113,8 +139,8 @@ class EditController extends Controller {
 			$revision->revision = 0;
 		} else {
 			// Update post
-			$post->content = Mrcore\Crypt::encrypt(Input::get('content'));
-			$post->teaser = Mrcore\Crypt::encrypt($post->createTeaser(Input::get('content')));
+			$post->content = Crypt::encrypt(Input::get('content'));
+			$post->teaser = Crypt::encrypt($post->createTeaser(Input::get('content')));
 			$post->save();
 
 			// Clear this posts cache
@@ -128,8 +154,8 @@ class EditController extends Controller {
 			if (isset($lastRevision)) $lastRevisionNum = $lastRevision->revision;
 			$revision->revision = $lastRevisionNum + 1;
 		}
-		$revision->content = Mrcore\Crypt::encrypt(Input::get('content'));
-		$revision->created_at = \Carbon\Carbon::now();
+		$revision->content = Crypt::encrypt(Input::get('content'));
+		$revision->created_at = Carbon::now();
 		$revision->save();
 
 		return 'saved';
@@ -495,11 +521,11 @@ class EditController extends Controller {
 
 		// Start new post
 		$post = new Post;
-		$post->uuid = Mrcore\Helpers\String::getGuid();
+		$post->uuid = String::getGuid();
 		$post->title = Input::get('title');
 		$post->slug = Input::get('slug');
-		$post->content = Mrcore\Crypt::encrypt('');
-		$post->teaser = Mrcore\Crypt::encrypt('');
+		$post->content = Crypt::encrypt('');
+		$post->teaser = Crypt::encrypt('');
 		$post->contains_script = false;
 		$post->contains_html = false;
 		$post->format_id = $formatID;

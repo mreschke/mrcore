@@ -16,7 +16,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		'Mrcore\Http\Middleware\VerifyCsrfToken',
-		#'Mrcore\Http\Middleware\UrlAnalyzer',
+		'Mrcore\Http\Middleware\AnalyzeRoute',
 	];
 
 	/**
@@ -27,7 +27,7 @@ class Kernel extends HttpKernel {
 	protected $routeMiddleware = [
 		'auth' => 'Mrcore\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'auth.digest' => 'Mrcore\Http\Middleware\AuthenticateWithDigestAuth',
+		#'auth.digest' => 'Mrcore\Http\Middleware\AuthenticateWithDigestAuth',
 		'guest' => 'Mrcore\Http\Middleware\RedirectIfAuthenticated',
 	];
 

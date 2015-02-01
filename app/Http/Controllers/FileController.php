@@ -1,8 +1,13 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
 
-use Mrcore\Sabredav;
-use Mrcore\Filemanager;
+use Mrcore\Support\Sabredav;
+use Mrcore\Support\Filemanager;
+use Mrcore\Support\Filemanager\Url;
 use Sabre\DAV;
+use Request;
+use Input;
+use Mrcore\Models\Post;
+use Route;
 
 class FileController extends Controller {
 
@@ -15,7 +20,7 @@ class FileController extends Controller {
 	public function fileRouter($slug = null)
 	{
 		// Instantiate our url analyzer class
-		$url = new Filemanager\Url(Request::url());
+		$url = new Url(Request::url());
 
 		/*echo "<hr />";
 		echo "Protocol: ".$url->getProtocol()."<br />";
@@ -58,7 +63,7 @@ class FileController extends Controller {
 			// $url will be that of the actual full path + file to make
 			// but that file may not exist yet, so we need to get just the path
 			// and see if thats writable
-			$parentUrl = new Filemanager\Url($url->getUrlParent());
+			$parentUrl = new Url($url->getUrlParent());
 			if ($parentUrl->isWritable()) {
 				return self::showSabredav($url);
 			} else {
@@ -86,7 +91,7 @@ class FileController extends Controller {
 					$dest = Request::header('Destination');
 					$segments = explode('/', $dest); array_pop($segments);
 					$dest = implode($segments, '/');
-					$destUrl = new Filemanager\Url($dest);
+					$destUrl = new Url($dest);
 					if ($destUrl->isWritable()) {
 						return self::showSabredav($url);
 					} else {
@@ -108,7 +113,7 @@ class FileController extends Controller {
 					$dest = Request::header('Destination');
 					$pathinfo = pathinfo($dest);
 					$dest = $pathinfo['dirname'];
-					$destUrl = new Filemanager\Url($dest);
+					$destUrl = new Url($dest);
 					if ($destUrl->isWritable()) {
 						return self::showSabredav($url);
 					} else {
@@ -319,7 +324,7 @@ class FileController extends Controller {
 		$browser = \Mrcore\Helpers\Guest::getBrowser();
 		$isCurl = preg_match("/curl/i", $browser);
 
-		if ($isCurl or \Route::currentRouteName() == 'webdav') {
+		if ($isCurl or Route::currentRouteName() == 'webdav') {
 			// Return no body for clean curl output
 			return Response::make(null, $responseCode);
 		} else {

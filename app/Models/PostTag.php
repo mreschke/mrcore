@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostTag extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostTag extends Model
 {
 
 	/**

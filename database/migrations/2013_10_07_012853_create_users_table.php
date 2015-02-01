@@ -111,9 +111,6 @@ class CreateUsersTable extends Migration {
 			// Updated By (user_id)
 			$table->integer('updated_by');
 
-			// Automatic Remember Token
-			$table->rememberToken();
-
 			// Automatic created_at and updated_at columns
 			$table->timestamps();
 		});

@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class UserRole extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class UserRole extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class UserRole extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}

@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Type extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Type extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class Type extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -48,7 +51,7 @@ class Type extends Eloquent
 	 */
 	public static function getAll()
 	{
-		return Mrcore\Cache::remember("types", function()
+		return Cache::remember("types", function()
 		{
 			return Type::all();
 		});
@@ -67,7 +70,7 @@ class Type extends Eloquent
 		
 		//Only cache if using default id/name
 		if ($keyField == 'id' && $valueField == 'name') {
-			return Mrcore\Cache::remember("types_$keyField-$valueField", $function);
+			return Cache::remember("types_$keyField-$valueField", $function);
 		} else {
 			return $function;
 		}

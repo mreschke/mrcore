@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Hashtag extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Hashtag extends Model
 {
 
 	/**
@@ -33,7 +36,7 @@ class Hashtag extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}

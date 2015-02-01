@@ -1,6 +1,8 @@
 <?php namespace Mrcore\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Config;
+use App;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -11,6 +13,10 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
+
+		// Load our custom macros
+		require __DIR__.'/../Support/Macro.php';
+
 		// ??????????????????????? App::error not exist, this was in global/start
 		// Mrcore FormValidationException
 		#\App::error(function(Mrcore\Exceptions\FormValidationException $exception, $code)
@@ -18,39 +24,6 @@ class AppServiceProvider extends ServiceProvider {
 		#	return Redirect::back()->withInput()->withErrors($exceptions->getErrors());
 		#});
 
-
-		#?????????? MARCOS???????????
-
-		/*
-		|--------------------------------------------------------------------------
-		| Response Macros
-		|--------------------------------------------------------------------------
-		|
-		| These are my own custom resposnes
-		| mReschke
-		|
-		*/
-		\Response::macro('notFound', function()
-		{
-			return \Response::view('error.404', array(), 404);
-		});
-
-		\Response::macro('denied', function()
-		{
-			if (\User::isAuthenticated()) {
-				// If logged in then show 401 error page
-				return \Response::view('error.401', array(), 401);
-			} else {
-				$url = \Request::url();
-				if (\Request::server('QUERY_STRING')) $url .= "?".\Request::server('QUERY_STRING');
-				return \View::make('login', array('referer' => $url));
-			}
-		});
-
-		\Response::macro('error', function()
-		{
-			return \Response::view('error.500', array(), 500);
-		});		
 	}
 
 	/**
@@ -64,14 +37,31 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->bind(
-			'Illuminate\Contracts\Auth\Registrar',
-			'Mrcore\Services\Registrar'
-		);
+		$this->app->bind('Illuminate\Contracts\Auth\Registrar', 'Mrcore\Services\Registrar');
 
-		#\Blade::setRawTags('{{', '}}');
-		#\Blade::setContentTags('{{{', '}}}');
-		#\Blade::setEscapedContentTags('{{{', '}}}');		
+		// Mrcore Bindings
+		$this->app->bind('mrcore', 'Mrcore\Mrcore\Mrcore');
+		$this->app->bind('Mrcore\Mrcore\MrcoreInterface', 'Mrcore\Mrcore\Mrcore');
+		$this->app->bind('Mrcore\Mrcore\ConfigInterface', 'Mrcore\Mrcore\Config');
+		$this->app->bind('Mrcore\Mrcore\LayoutInterface', 'Mrcore\Mrcore\Layout');
+		$this->app->bind('Mrcore\Mrcore\PostInterface', 'Mrcore\Mrcore\Post');
+		$this->app->bind('Mrcore\Mrcore\RouterInterface', 'Mrcore\Mrcore\Router');
+		$this->app->bind('Mrcore\Mrcore\UserInterface', 'Mrcore\Mrcore\User');		
+
+		// Layout Bindings
+		$this->app->bind('layout', 'Mrcore\Support\Layout');
+		$this->app->bind('Mrcore\Support\LayoutInterface', 'Mrcore\Support\Layout');
+
+		// Register Themes Here instead of config/app.php because of Support/AssetProvider
+		$themes = Config::get('theme.themes');
+		foreach ($themes as $theme) {
+			$this->app->register("$theme\Providers\AppServiceProvider");
+		}
+
+		// DEBUG ONLY, set PHP error reporting level
+		error_reporting(E_ERROR | E_WARNING | E_PARSE);
+		#error_reporting(E_ERROR | E_WARNING | E_PARSE | E_DEPRECATED);
+
 	}
 
 }

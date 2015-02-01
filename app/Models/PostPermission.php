@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostPermission extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostPermission extends Model
 {
 
 	/**

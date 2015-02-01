@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Mrcore;
 
+use LayoutFacade;
+
 /**
  * This is the layout API layer used from the Mrcore class/facade
  * This layer allows us to change our model columns/properties while
@@ -9,81 +11,81 @@ class Layout implements LayoutInterface
 {
 	public function title($value = null)
 	{
-		return \Layout::title($value);
+		return LayoutFacade::title($value);
 	}
 
 	public function css($value = null, $prepend = false)
 	{
-		return \Layout::css($value, $prepend);
+		return LayoutFacade::css($value, $prepend);
 	}
 
 	public function removeCss($value)
 	{
-		return \Layout::removeCss($value);
+		return LayoutFacade::removeCss($value);
 	}
 
 	public function printCss($value = null, $prepend = false)
 	{
-		return \Layout::printCss($value, $prepend);
+		return LayoutFacade::printCss($value, $prepend);
 	}
 
 	public function js($value = null, $prepend = false)
 	{
-		return \Layout::js($value, $prepend);
+		return LayoutFacade::js($value, $prepend);
 	}
 
 	public function removeJs($value)
 	{
-		return \Layout::removeJs($value);
+		return LayoutFacade::removeJs($value);
 	}
 
 	public function script($value = null)
 	{
-		return \Layout::script($value);
+		return LayoutFacade::script($value);
 	}
 
 	public function mode($value = null)
 	{
-		return \Layout::mode($value);
+		return LayoutFacade::mode($value);
 	}
 
 	public function modeIs($value)
 	{
-		return \Layout::modeIs($value);
+		return LayoutFacade::modeIs($value);
 	}
 
 	public function hideAll($value = null)
 	{
-		return \Layout::hideAll($value);
+		return LayoutFacade::hideAll($value);
 	}
 
 	public function hideHeaderbar($value = null)
 	{
-		return \Layout::hideHeaderbar($value);
+		return LayoutFacade::hideHeaderbar($value);
 	}
 
 	public function hideFooterbar($value = null)
 	{
-		return \Layout::hideFooterbar($value);
+		return LayoutFacade::hideFooterbar($value);
 	}
 
 	public function hideTitlebar($value = null)
 	{
-		return \Layout::hideTitlebar($value);
+		return LayoutFacade::hideTitlebar($value);
 	}
 
 	public function hideMenubar($value = null)
 	{
-		return \Layout::hideMenubar($value);
+		return LayoutFacade::hideMenubar($value);
 	}
 
 	public function viewport($value = null)
 	{
-		return \Layout::viewport($value);
+		return LayoutFacade::viewport($value);
 	}
 
 	public function container($value = null)
 	{
-		return \Layout::container($value);
+		return LayoutFacade::container($value);
 	}
 }

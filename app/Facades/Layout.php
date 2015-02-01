@@ -1,7 +1,7 @@
 <?php namespace Mrcore\Facades;
 
 /**
- * @see \Mrcore\Layout
+ * @see \Mrcore\Mrcore\Layout
  */
 class Layout extends \Illuminate\Support\Facades\Facade {
 

@@ -1,4 +1,17 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
+
+use View;
+use Input;
+use Layout;
+use Request;
+use Session;
+use Redirect;
+use Response;
+use Mrcore\Models\Tag;
+use Mrcore\Models\Type;
+use Mrcore\Models\Post;
+use Mrcore\Models\Badge;
+use Mrcore\Models\Format;
 
 class SearchController extends Controller {
 

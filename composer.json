@@ -8,8 +8,12 @@
 		"laravel/framework": "5.0.*@dev",
 		"illuminate/workbench": "5.0.*@dev",
 		"illuminate/html": "~5.0",
+		"graham-campbell/exceptions": "0.1.*",
 		"guzzlehttp/guzzle": "~4.0",
-		"predis/predis": "1.1.*@dev"
+		"predis/predis": "1.1.*@dev",
+		"sabre/dav": "1.8.7",
+		"camspiers/porter-stemmer": "1.0.0",
+		"easybook/geshi": "dev-master"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -19,12 +23,11 @@
 	"autoload": {
 		"classmap": [
 			"database",
-			"app/Http/Controllers",
-			"app/Models",
 			"app/Libraries"
 		],
 		"psr-4": {
-			"Mrcore\\": "app/"
+			"Mrcore\\": "app/",
+			"Applications\\": "../Applications/"
 		}
 	},
 	"autoload-dev": {

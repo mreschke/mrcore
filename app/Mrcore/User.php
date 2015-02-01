@@ -92,7 +92,19 @@ class User implements UserInterface
 	 */
 	public function isAdmin()
 	{
-		return $this->model->isAdmin();
+		#return $this->model->isAdmin();
+		return \Mrcore\Models\User::isAdmin();
+	}
+
+	public function isAuthenticated()
+	{
+		#return $this->model->isAuthenticated();
+		return \Mrcore\Models\User::isAuthenticated();
+	}	
+
+	public static function hasPermission($constant)
+	{
+		return \Mrcore\Models\User::hasPermission($constant);
 	}
 
 	/**

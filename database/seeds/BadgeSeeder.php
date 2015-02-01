@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\Badge;
+use Mrcore\Models\PostBadge;
+
 class BadgeSeeder extends Seeder
 {
 	public function run()

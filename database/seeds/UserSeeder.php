@@ -1,5 +1,9 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\User;
+use Mrcore\Helpers\String;
+
 class UserSeeder extends Seeder
 {
 
@@ -10,7 +14,7 @@ class UserSeeder extends Seeder
 
 		// 1 Anonymous User
 		User::create(array(
-			'uuid'     => \Mrcore\Helpers\String::getGuid(),
+			'uuid'     => String::getGuid(),
 			'email'    => 'anonymous@anonymous.com',
 			'password' => Hash::make(md5(microtime())),
 			'first'    => 'Anonymous',
@@ -25,7 +29,7 @@ class UserSeeder extends Seeder
 
 		// 2 Admin
 		User::create(array(
-			'uuid'     => \Mrcore\Helpers\String::getGuid(),
+			'uuid'     => String::getGuid(),
 			'email'    => 'admin@example.com',
 			'password' => Hash::make('mrcore5'),
 			'first'    => 'Admin',

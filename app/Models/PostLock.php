@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostLock extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostLock extends Model
 {
 
 	/**

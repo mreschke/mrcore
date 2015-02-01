@@ -1,4 +1,12 @@
-<?php
+<?php namespace Mrcore\Http\Controllers;
+
+use Auth;
+use View;
+use Input;
+use Request;
+use Session;
+use Redirect;
+
 
 class LoginController extends Controller {
 
@@ -60,7 +68,7 @@ class LoginController extends Controller {
 				return Redirect::to($referer);
 			} else {
 				// Invalid Login
-				sleep(5);
+				sleep(3);
 				return Redirect::route('login')
 					->with('message', 'Invalid username/password')
 					->with('referer', $referer);

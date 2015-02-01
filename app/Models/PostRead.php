@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostRead extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostRead extends Model
 {
 
 	/**

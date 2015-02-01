@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostIndex extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostIndex extends Model
 {
 
 	/**

@@ -1,6 +1,8 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class PostBadge extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+
+class PostBadge extends Model
 {
 
 	/**

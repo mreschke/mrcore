@@ -11,6 +11,18 @@
 |
 */
 
+
+/*Route::get('/', function() {
+	echo "hello world!";
+
+
+	#$x = app('mrcore');
+	#dd($x);
+
+}); return;*/
+
+
+
 // Route to Home Page Post (/)
 $homeExists = Route::getRoutes()->hasNamedRoute('home');
 if (!$homeExists) {

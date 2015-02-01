@@ -8,6 +8,31 @@
 
 /*
 |--------------------------------------------------------------------------
+| Mrcore Custom Function and Helper Overrides
+|--------------------------------------------------------------------------
+|
+| Stream all /asset/* files from the defined theme folders
+|
+*/
+
+require __DIR__.'/../app/Support/Helpers.php';
+
+/*
+|--------------------------------------------------------------------------
+| Mrcore Custom Asset Manager
+|--------------------------------------------------------------------------
+|
+| Stream all /asset/* files from the defined theme folders
+|
+*/
+if (substr($_SERVER['REQUEST_URI'], 0, 7) == '/assets') {
+	require __DIR__.'/../app/Support/Asset.php';
+	$asset = new Mrcore\Support\Asset($_SERVER['REQUEST_URI']);
+	exit();
+}
+
+/*
+|--------------------------------------------------------------------------
 | Register The Auto Loader
 |--------------------------------------------------------------------------
 |

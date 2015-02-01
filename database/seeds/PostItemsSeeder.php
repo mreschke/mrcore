@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\Format;
+use Mrcore\Models\Type;
+use Mrcore\Models\Framework;
+use Mrcore\Models\Mode;
+
 class PostItemsSeeder extends Seeder
 {
 	public function run()

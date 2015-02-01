@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\UserPermission;
+
 class UserPermissionSeeder extends Seeder
 {
 	public function run()

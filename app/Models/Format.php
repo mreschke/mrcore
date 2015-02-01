@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Format extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Format extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class Format extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -49,7 +52,7 @@ class Format extends Eloquent
 	 */
 	public static function getAll()
 	{
-		return Mrcore\Cache::remember("formats", function()
+		return Cache::remember("formats", function()
 		{
 			return Format::orderBy('order')->get();
 		});
@@ -69,7 +72,7 @@ class Format extends Eloquent
 		
 		//Only cache if using default id/name
 		if ($keyField == 'id' && $valueField == 'name') {
-			return Mrcore\Cache::remember("formats_$keyField-$valueField", $function);
+			return Cache::remember("formats_$keyField-$valueField", $function);
 		} else {
 			return $function;
 		}

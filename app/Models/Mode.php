@@ -1,6 +1,9 @@
-<?php
+<?php namespace Mrcore\Models;
 
-class Mode extends Eloquent
+use Illuminate\Database\Eloquent\Model;
+use Mrcore\Support\Cache;
+
+class Mode extends Model
 {
 
 	/**
@@ -26,7 +29,7 @@ class Mode extends Eloquent
 	 */
 	public static function find($id, $columns = array('*'))
 	{
-		return Mrcore\Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
+		return Cache::remember(strtolower(get_class())."_$id", function() use($id, $columns) {
 			return parent::find($id, $columns);
 		});		
 	}
@@ -38,7 +41,7 @@ class Mode extends Eloquent
 	 */
 	public static function allArray($keyField = 'id', $valueField = 'name')
 	{
-		return Mrcore\Cache::remember("modes_$keyField-$valueField", function() use($keyField, $valueField)
+		return Cache::remember("modes_$keyField-$valueField", function() use($keyField, $valueField)
 		{
 			return Mode::all()->lists($valueField, $keyField);
 		});

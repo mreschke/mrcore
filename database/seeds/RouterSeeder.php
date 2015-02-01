@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use Mrcore\Models\Router;
+
 class RouterSeeder extends Seeder
 {
 	public function run()

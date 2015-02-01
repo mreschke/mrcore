@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Mrcore;
 
+use Config;
+
 /**
  * This is the main mrcore API interface
  * used by all "wiki app/workbench" developers
@@ -45,9 +47,9 @@ class Mrcore implements MrcoreInterface
 	 */
 	public function lifecycle()
 	{
-		return \Lifecycle::dump();
+		return "Deprecated";
+		#return \Lifecycle::dump();
 	}
-
 
 	/**
 	 * Return the mrcore public path for this public asset
@@ -55,7 +57,7 @@ class Mrcore implements MrcoreInterface
 	 */
 	public function asset($file)
 	{
-		$baseUrl = \Config::get('mrcore.base_url');
+		$baseUrl = Config::get('mrcore.base_url');
 		return $baseUrl . '/' . $file;
 	}
 
@@ -66,11 +68,11 @@ class Mrcore implements MrcoreInterface
 	public function file($file)
 	{
 		if (substr($file, 0, 1) == '/') {
-			return \Config::get('mrcore.files').$file;
+			return Config::get('mrcore.files').$file;
 		} elseif (is_numeric(substr($file, 0, 1))) {
-			return \Config::get('mrcore.files').'/index/'.$file;
+			return Config::get('mrcore.files').'/index/'.$file;
 		} else {
-			return \Config::get('mrcore.files').'/index/'.$this->post()->id().'/'.$file;
+			return Config::get('mrcore.files').'/index/'.$this->post()->id().'/'.$file;
 		}
 	}
 

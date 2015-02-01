@@ -18,10 +18,12 @@ class Lifecycle {
 	public static function get()
 	{
 		#return \App::make('mrcore.lifecycle');
+		return [];
 	}
 
 	public static function dump()
 	{
+		return "Deprecated";
 		/*exec('cd '.base_path().'/workbench; pwd -P', $output);
 		$workbench = $output[0];
 
@@ -63,6 +65,7 @@ class Lifecycle {
 
 	public static function dumpText()
 	{
+		return "Deprecated";
 		/*$items = \App::make('mrcore.lifecycle');
 
 		exec('cd '.base_path().'/workbench; pwd -P', $output);
