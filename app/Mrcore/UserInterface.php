@@ -16,6 +16,8 @@ interface UserInterface
 
 	public function alias();
 
+	public function avatar();
+
 	public function globalPostID();
 
 	public function homePostID();

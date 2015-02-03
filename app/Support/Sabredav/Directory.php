@@ -2,7 +2,7 @@
 
 use Request;
 use Sabre\DAV;
-use DAV\Collection;
+use Sabre\DAV\Collection;
 use Mrcore\Support\Filemanager;
 use Mrcore\Support\Filemanager\Url;
 

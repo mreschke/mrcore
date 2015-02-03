@@ -1,8 +1,9 @@
 <?php namespace Mrcore\Support\Filemanager;
 
-use Post;
-use Router;
 use Config;
+use Mrcore\Models\Post;
+use Mrcore\Models\Router;
+
 
 class Symlink {
 

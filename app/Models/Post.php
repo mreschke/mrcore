@@ -3,14 +3,15 @@
 use DB;
 use URL;
 use Auth;
+use Input;
 use Config;
+use Session;
 use Mrcore\Models\User;
 use Mrcore\Support\Cache;
 use Mrcore\Support\Crypt;
-use Illuminate\Database\Eloquent\Model;
-use Input;
-use Session;
 use Mrcore\Support\String;
+use Mrcore\Support\Indexer;
+use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
@@ -509,7 +510,7 @@ class Post extends Model
 		// Filter by word search query
 		// Must be last becasue of order bys
 		if ($query) {
-			$words = array_values(Mrcore\Indexer::stemText($query));
+			$words = array_values(Indexer::stemText($query));
 			$posts->where(function($sql) use ($words) {
 				foreach ($words as $word) {
 					if (Config::get('mrcore.use_encryption')) $word = md5($word);

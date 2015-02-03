@@ -19,7 +19,7 @@ return [
 	*/
 
 	'themes' => [
-		'Applications\Themes\Bootswatch'
+		'Mrcore\Themes\Bootswatch'
 	],
 
 	/*
@@ -33,6 +33,6 @@ return [
 	|
 	*/	
 
-	'css' => 'simplex.min.css'
+	'css' => 'darkly.min.css'
 
 ];

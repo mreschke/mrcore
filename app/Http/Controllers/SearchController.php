@@ -3,6 +3,7 @@
 use View;
 use Input;
 use Layout;
+use Config;
 use Request;
 use Session;
 use Redirect;

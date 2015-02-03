@@ -1,5 +1,6 @@
 <?php namespace Mrcore\Http\Controllers;
 
+use Auth;
 use View;
 use Cache;
 use Input;
@@ -7,12 +8,14 @@ use Config;
 use Layout;
 use Request;
 use Response;
+use Redirect;
 use Carbon\Carbon;
 use Mrcore\Models\Tag;
 use Mrcore\Models\Mode;
 use Mrcore\Models\Post;
 use Mrcore\Models\Role;
 use Mrcore\Models\Type;
+use Mrcore\Models\User;
 use Mrcore\Models\Badge;
 use Mrcore\Support\Crypt;
 use Mrcore\Models\Format;
@@ -21,10 +24,11 @@ use Mrcore\Models\Hashtag;
 use Mrcore\Models\PostTag;
 use Mrcore\Support\String;
 use Mrcore\Models\Revision;
+use Mrcore\Models\Framework;
 use Mrcore\Models\PostBadge;
 use Mrcore\Models\Permission;
 use Mrcore\Models\PostPermission;
-
+use Mrcore\Support\Filemanager\Symlink;
 
 class EditController extends Controller {
 
@@ -116,6 +120,7 @@ class EditController extends Controller {
 	 */
 	public function updatePost($id)
 	{
+
 		// Ajax only controller
 		if (!Request::ajax()) return Response::notFound();
 
@@ -373,7 +378,7 @@ class EditController extends Controller {
 
 				// Symlink Management, only create initially and only if static
 				if ($static) {
-					$symlink = new \Mrcore\Filemanager\Symlink($post, $originalRoute);
+					$symlink = new Symlink($post, $originalRoute);
 					$symlinkReturn = $symlink->manage();
 					if (isset($symlinkReturn)) $ret = $symlinkReturn;
 				}

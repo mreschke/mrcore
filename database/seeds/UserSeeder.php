@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Mrcore\Models\User;
-use Mrcore\Helpers\String;
+use Mrcore\Support\String;
 
 class UserSeeder extends Seeder
 {

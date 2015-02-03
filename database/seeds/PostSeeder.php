@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use Mrcore\Helpers\String;
 use Mrcore\Models\Post;
 use Mrcore\Models\Router;
-use Mrcore\Helpers\Crypt;
+use Mrcore\Support\Crypt;
+use Mrcore\Support\String;
+use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
 {
@@ -189,7 +189,7 @@ See http://mrcore.mreschke.com/doc/advanced/workbench for more info in workbench
 			'title' => 'Search Box',
 			'slug' => 'search-box',
 			'content' =>  Crypt::encrypt('<?php
-$badges = Badge::all();
+$badges = Mrcore\Models\Badge::all();
 
 $admin = array(
 	array("name" => "mRcore Workbench", "url" => "/5"),
@@ -232,7 +232,7 @@ $private = array ();
 		<? endforeach ?>
 		</ul>
 
-		<? if (User::isAdmin()): ?>
+		<? if (Mrcore::user()->isAdmin()): ?>
 			<h4>Admin Only</h4>	
 			<ul class="list-unstyled">
 			<? foreach ($admin as $item): ?>
@@ -259,7 +259,7 @@ $private = array ();
 				</li>
 			<? endforeach ?>
 		<? endif ?>
-		<? if (User::isAuthenticated()): ?>
+		<? if (Mrcore::user()->isAuthenticated()): ?>
 			<? if (count($private) > 0) echo "<hr />"; ?>
 			<? foreach ($private as $item): ?>
 				<li>

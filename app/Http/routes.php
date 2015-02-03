@@ -21,8 +21,6 @@
 
 }); return;*/
 
-
-
 // Route to Home Page Post (/)
 $homeExists = Route::getRoutes()->hasNamedRoute('home');
 if (!$homeExists) {
@@ -139,7 +137,7 @@ Route::match($webdavMethods, '/file/{id?}/{slug?}', function ($id = null, $slug 
 
 
 // Search route
-Route::post('/search/searchbox', array(
+Route::any('/search/searchbox', array(
 	'uses' => 'SearchController@searchMenu',
 	'as' => 'searchMenu'
 ));

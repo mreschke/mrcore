@@ -36,20 +36,15 @@ class AnalyzeRoute {
 			Auth::user()->login();
 		}
 
-		$reserved = [
-			'admin', 'router', 'file', 'files',
-			'search', 'login', 'logout', 'demo',
-			'assets', 'images', 'js', 'css', 'theme',
-			'ace-editor',
-			'tmp'
-		];
-		$legacy = ['topic', 'topics', 'post', 'posts'];
+		// Set some Mrcore API data
+		Mrcore::user()->setModel(Auth::user());		
 
 		// Analyse URL and find matching mrcore router tabel entry
 		$route = app('Mrcore\Support\RouteAnalyzer');
-		$route->analyzeUrl($reserved, $legacy);
+		$route->analyzeUrl(Config::get('mrcore.reserved_routes'), Config::get('mrcore.legacy_routes'));
 
 		if ($route->foundRoute()) {
+
 			// Get post defined by route
 			$post = Post::get($route->currentRoute()->post_id);
 
@@ -92,20 +87,30 @@ class AnalyzeRoute {
 				Layout::mode($post->mode->constant);	
 			}
 
-			// ####################################################
-
 			// Store post and router in the IoC for future usage
 			Mrcore::post()->setModel($post);
 
+			#dd($post);
+
 	
 		} elseif ($route->foundRedirect()) {
-			return Redirect::to($route->responseRedirect);
+			#if (\Request::segment(1) == 'post' && \Request::segment(3) == 'edit') {
+				// FIXME later, don't redirect if post/1/edit, or edit won't hit
+			#} else {
+			#	return Redirect::to($route->responseRedirect);	
+			#}
 
 		} elseif ($route->notFound()) {
-			abort(404);
+			#abort(404);
 			#Response::notFound(); ??
 		}
-		// there is a 202 also ?? webdav
+		// Will also return 202 which means URL is reserved
+		// and will be handled by laravel routes file, like /search, /login...
+
+		// Set some Mrcore API data
+		Mrcore::router()->setModel($route->currentRoute());
+		Mrcore::router()->responseCode($route->responseCode);
+		Mrcore::router()->responseRedirect($route->responseRedirect);
 
 		// Next middleware
 		return $next($request);

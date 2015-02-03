@@ -1,16 +1,18 @@
 <?php namespace Mrcore\Http\Controllers;
 
+use View;
+use Input;
+use Route;
+use Request;
+use Response;
+use Sabre\DAV;
+use Mrcore\Models\Post;
+use Mrcore\Support\Guest;
 use Mrcore\Support\Sabredav;
 use Mrcore\Support\Filemanager;
 use Mrcore\Support\Filemanager\Url;
-use Sabre\DAV;
-use Request;
-use Input;
-use Mrcore\Models\Post;
-use Route;
 
 class FileController extends Controller {
-
 
 	/**
 	 * Route traffic based on HTTP verb and webdav vs HTTP protocols
@@ -21,6 +23,8 @@ class FileController extends Controller {
 	{
 		// Instantiate our url analyzer class
 		$url = new Url(Request::url());
+
+		dd($url);
 
 		/*echo "<hr />";
 		echo "Protocol: ".$url->getProtocol()."<br />";
@@ -321,7 +325,7 @@ class FileController extends Controller {
 	public function showError($responseCode)
 	{
 		// Get browser to detect if curl
-		$browser = \Mrcore\Helpers\Guest::getBrowser();
+		$browser = Guest::getBrowser();
 		$isCurl = preg_match("/curl/i", $browser);
 
 		if ($isCurl or Route::currentRouteName() == 'webdav') {

@@ -6,6 +6,7 @@ use Layout;
 use Mrcore;
 use Request;
 use Response;
+use Redirect;
 use Mrcore\Models\Post;
 use Mrcore\Models\Revision;
 
@@ -19,7 +20,9 @@ class PostController extends Controller {
 	public function showPost()
 	{
 
-		/*$router = Mrcore::router();
+		#dd('post controller');
+
+		$router = Mrcore::router();
 		if (isset($router)) {
 			if ($router->responseCode == 404) {
 				return Response::notFound();
@@ -40,7 +43,7 @@ class PostController extends Controller {
 				return Redirect::to($url);
 			}
 		}
-		*/
+		
 
 		# Gets post, parse + globals
 		# If ajax, do NOT include globals

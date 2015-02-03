@@ -1,6 +1,6 @@
 <?php namespace Mrcore\Support\Filemanager;
 
-use Post;
+use Mrcore\Models\Post;
 use Route;
 use Config;
 use Request;

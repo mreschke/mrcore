@@ -53,6 +53,11 @@ class User implements UserInterface
 		return $this->model->alias;
 	}
 
+	public function avatar()
+	{
+		return $this->model->avatar;
+	}
+
 	public function globalPostID()
 	{
 		return $this->model->global_post_id;

@@ -24,6 +24,23 @@ class AppServiceProvider extends ServiceProvider {
 		#	return Redirect::back()->withInput()->withErrors($exceptions->getErrors());
 		#});
 
+
+		// Add my own internal configs
+		Config::set('mrcore.reserved_routes', array(
+			'admin', 'router', 'file', 'files',
+			'search', 'login', 'logout', 'demo',
+			'assets', 'images', 'js', 'css', 'theme',
+			'ace-editor',
+			'tmp'
+		));
+		Config::set('mrcore.legacy_routes', array(
+			'topic', 'topics',
+			'post', 'posts',
+		));
+		Config::set('mrcore.magic_folders', array('.sys', 'app'));
+		Config::set('mrcore.magic_folders_exceptions', array('.sys/public', 'app/public'));
+
+
 	}
 
 	/**
@@ -55,6 +72,7 @@ class AppServiceProvider extends ServiceProvider {
 		// Register Themes Here instead of config/app.php because of Support/AssetProvider
 		$themes = Config::get('theme.themes');
 		foreach ($themes as $theme) {
+			#dd(realpath("/var/www/mrcore6/Applications/Mrcore/Theme/Bootswatch"))
 			$this->app->register("$theme\Providers\AppServiceProvider");
 		}
 

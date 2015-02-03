@@ -20,7 +20,7 @@ class Router extends Model
 	 */
 	public function creator()
 	{
-		return $this->belongsTo('User', 'created_by');
+		return $this->belongsTo('Mrcore\Models\User', 'created_by');
 	}
 
 	/**

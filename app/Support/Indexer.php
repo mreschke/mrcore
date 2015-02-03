@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Support;
 
+use Porter;
+
 /*
  Word indexer class
  mReschke 2010-09-09
@@ -47,7 +49,7 @@ class Indexer {
         
         //Add Badges
         foreach ($badges as $badge) {
-            $stemmedBadge = \Porter::Stem(strtolower($badge));
+            $stemmedBadge = Porter::Stem(strtolower($badge));
             //Add badge to $words
             if (!isset($words[$stemmedBadge])) {
                 //Badge word is not in $words, so add it real quick
@@ -59,7 +61,7 @@ class Indexer {
         
         //Add tags
         foreach ($tags as $tag) {
-            $stemmedTag = \Porter::Stem(strtolower($tag));
+            $stemmedTag = Porter::Stem(strtolower($tag));
             //Add tag to $words
             if (!isset($words[$stemmedTag])) {
                 //Tag word is not in $words, so add it real quick
@@ -112,7 +114,7 @@ class Indexer {
             if (strlen($word) <= 2 || is_numeric($word)) {
                 continue;
             }
-            $stemmedWords[] = \Porter::Stem($word);
+            $stemmedWords[] = Porter::Stem($word);
             
         }
         return $stemmedWords;

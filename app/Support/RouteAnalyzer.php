@@ -111,6 +111,7 @@ class RouteAnalyzer
 		} elseif (in_array($firstSegment, $legacy)) {
 			// Url is legacy /topic/42/anything
 			$this->route = RouterTable::byPost($secondSegment);
+			
 			if (is_null($this->route)) {
 				$this->responseCode = 404;
 				return;
