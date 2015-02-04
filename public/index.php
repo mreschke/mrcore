@@ -8,28 +8,16 @@
 
 /*
 |--------------------------------------------------------------------------
-| Mrcore Custom Function and Helper Overrides
+| Mrcore Foundation
 |--------------------------------------------------------------------------
 |
-| Stream all /asset/* files from the defined theme folders
+| Fire up the mrcore foundation to allow asset handling
+| and other foundation support bootstraping.
 |
 */
 
-require __DIR__.'/../app/Support/Helpers.php';
-
-/*
-|--------------------------------------------------------------------------
-| Mrcore Custom Asset Manager
-|--------------------------------------------------------------------------
-|
-| Stream all /asset/* files from the defined theme folders
-|
-*/
-if (substr($_SERVER['REQUEST_URI'], 0, 7) == '/assets') {
-	require __DIR__.'/../app/Support/Asset.php';
-	$asset = new Mrcore\Support\Asset($_SERVER['REQUEST_URI']);
-	exit();
-}
+$basePath = realpath(__DIR__.'/../');
+require __DIR__.'/../../Modules/Foundation/Bootstrap/Start.php';
 
 /*
 |--------------------------------------------------------------------------

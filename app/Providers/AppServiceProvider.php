@@ -65,16 +65,6 @@ class AppServiceProvider extends ServiceProvider {
 		$this->app->bind('Mrcore\Mrcore\RouterInterface', 'Mrcore\Mrcore\Router');
 		$this->app->bind('Mrcore\Mrcore\UserInterface', 'Mrcore\Mrcore\User');		
 
-		// Layout Bindings
-		$this->app->bind('layout', 'Mrcore\Support\Layout');
-		$this->app->bind('Mrcore\Support\LayoutInterface', 'Mrcore\Support\Layout');
-
-		// Register Themes Here instead of config/app.php because of Support/AssetProvider
-		$themes = Config::get('theme.themes');
-		foreach ($themes as $theme) {
-			$this->app->register("$theme[namespace]\Providers\AppServiceProvider");
-		}
-
 		// DEBUG ONLY, set PHP error reporting level
 		error_reporting(E_ERROR | E_WARNING | E_PARSE);
 		#error_reporting(E_ERROR | E_WARNING | E_PARSE | E_DEPRECATED);

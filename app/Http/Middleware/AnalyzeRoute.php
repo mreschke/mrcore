@@ -67,20 +67,6 @@ class AnalyzeRoute {
 				$post->incrementClicks();
 			}
 
-			// Override posts view mode with URL ?default, ?simple or ?raw
-			$defaultMode = Input::get('default');
-			if (isset($defaultMode) || Input::get('viewmode') == 'default') {
-				Layout::mode('default');
-			}
-			$simpleMode = Input::get('simple');
-			if (isset($simpleMode) || Input::get('viewmode') == 'simple') {
-				Layout::mode('simple');
-			}
-			$rawMode = Input::get('raw');
-			if (isset($rawMode) || Input::get('viewmode') == 'raw') {
-				Layout::mode('raw');
-			}
-
 			// Adjust $view for this $this->post
 			Layout::title($post->title);
 			if ($post->mode_id <> Config::get('mrcore.default_mode')) {
@@ -89,8 +75,6 @@ class AnalyzeRoute {
 
 			// Store post and router in the IoC for future usage
 			Mrcore::post()->setModel($post);
-
-			#dd($post);
 
 	
 		} elseif ($route->foundRedirect()) {

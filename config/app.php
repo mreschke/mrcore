@@ -136,7 +136,6 @@ return [
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
-		'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -146,16 +145,17 @@ return [
 		'Mrcore\Providers\ConfigServiceProvider',
 		'Mrcore\Providers\EventServiceProvider',
 		'Mrcore\Providers\RouteServiceProvider',
-		#'Barryvdh\Debugbar\ServiceProvider',
 
 		/*
-		 * Mrcore Specific Service Providers...
+		 * Mrcore Service Providers...
 		 */
-		#'Mrcore\Providers\MrcoreServiceProvider',
-		#'Mrcore\Providers\RouterServiceProvider',
-		#'Mrcore\Providers\WorkbenchServiceProvider',
-		#'Mrcore\Providers\LayoutServiceProvider',
-		#'Mrcore\Providers\UrlServiceProvider',
+		'Mrcore\Modules\Foundation\Providers\FoundationServiceProvider',
+
+		/*
+		 * Additional Service Providers...
+		 */
+		'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
+		#'Barryvdh\Debugbar\ServiceProvider',
 
 	],
 
@@ -211,7 +211,6 @@ return [
 		 * Mrcore Specific Aliases...
 		 */
 		'Mrcore'          => 'Mrcore\Facades\Mrcore',
-		'Layout'          => 'Mrcore\Facades\Layout',
 		#'Workbench'       => 'Mrcore\Facades\Workbench',
 
 	],

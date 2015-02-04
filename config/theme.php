@@ -36,7 +36,7 @@ return [
 	|
 	*/	
 
-	'css' => 'darkly.min.css'
+	'css' => 'slate.min.css'
 
 ];
 
