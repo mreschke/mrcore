@@ -9,8 +9,7 @@
         { "type": "vcs", "url": "https://github.com/mreschke/mrcore-themes-bootswatch"}
     ],
 	"require": {
-		"laravel/framework": "5.0.*@dev",
-		"illuminate/workbench": "5.0.*@dev",
+		"laravel/framework": "5.0.*",
 		"illuminate/html": "~5.0",
 		"graham-campbell/exceptions": "0.1.*",
 		"guzzlehttp/guzzle": "~4.0",

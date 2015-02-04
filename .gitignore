@@ -20,11 +20,11 @@ vendor
 node_modules
 #composer.phar
 #composer.lock #should be in git?
+/vendor
+/node_modules
 .env
 /.local
 .DS_Store
 Thumbs.db
 .nfs*
 .swp
-
-
