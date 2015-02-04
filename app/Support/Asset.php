@@ -22,8 +22,7 @@ class Asset {
 		// Loop themes and create absolute paths url
 		$paths = [];
 		foreach ($themes as $theme) {
-			$theme = preg_replace("'\\\'", "/", $theme);
-			$paths[] = realpath(__DIR__."/../../../$theme/Assets");
+			$paths[] = realpath(__DIR__."/../../$theme[path]/Assets");
 		}
 
 		// Always add mrcore public at the end

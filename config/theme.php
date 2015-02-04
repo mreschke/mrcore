@@ -19,7 +19,10 @@ return [
 	*/
 
 	'themes' => [
-		'Mrcore\Themes\Bootswatch'
+		[
+			'namespace' => 'Mrcore\Themes\Bootswatch',
+			'path' => '../Themes/Bootswatch'
+		]
 	],
 
 	/*
@@ -36,3 +39,6 @@ return [
 	'css' => 'darkly.min.css'
 
 ];
+
+// Mrcore\Themes\Bootswatch
+// Themes\Bootswatch

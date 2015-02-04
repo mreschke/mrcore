@@ -72,8 +72,7 @@ class AppServiceProvider extends ServiceProvider {
 		// Register Themes Here instead of config/app.php because of Support/AssetProvider
 		$themes = Config::get('theme.themes');
 		foreach ($themes as $theme) {
-			#dd(realpath("/var/www/mrcore6/Applications/Mrcore/Theme/Bootswatch"))
-			$this->app->register("$theme\Providers\AppServiceProvider");
+			$this->app->register("$theme[namespace]\Providers\AppServiceProvider");
 		}
 
 		// DEBUG ONLY, set PHP error reporting level
