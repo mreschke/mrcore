@@ -150,11 +150,14 @@ return [
 		 * Mrcore Service Providers...
 		 */
 		'Mrcore\Modules\Foundation\Providers\FoundationServiceProvider',
+		'Mrcore\Modules\Auth\Providers\AuthServiceProvider',
+		'Mrcore\Modules\Wiki\Providers\WikiServiceProvider',
+
+		
 
 		/*
 		 * Additional Service Providers...
 		 */
-		'GrahamCampbell\Exceptions\ExceptionsServiceProvider',
 		#'Barryvdh\Debugbar\ServiceProvider',
 
 	],

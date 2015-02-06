@@ -2,8 +2,9 @@
 
 // Not really sure where put these, for now they are here and included from Providers\AppServiceProvider.
 
-use Mrcore\Models\User;
 
+# NO use abort(404), abort(401), abort(500)...views automatically used
+/*
 // Response Macros
 Response::macro('notFound', function()
 {
@@ -12,7 +13,7 @@ Response::macro('notFound', function()
 
 Response::macro('denied', function()
 {
-	if (User::isAuthenticated()) {
+	if (Auth::check()) {
 		// If logged in then show 401 error page
 		return Response::view('error.401', array(), 401);
 	} else {
@@ -26,3 +27,4 @@ Response::macro('error', function()
 {
 	return Response::view('error.500', array(), 500);
 });
+*/

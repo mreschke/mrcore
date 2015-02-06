@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\Role;
-use Mrcore\Models\UserRole;
+use Mrcore\Modules\Wiki\Models\Role;
+use Mrcore\Modules\Wiki\Models\UserRole;
 
-class RoleSeeder extends Seeder
+class WikiRoleSeeder extends Seeder
 {
 	public function run()
 	{

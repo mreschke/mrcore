@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\Badge;
-use Mrcore\Models\PostBadge;
+use Mrcore\Modules\Wiki\Models\Badge;
+use Mrcore\Modules\Wiki\Models\PostBadge;
 
-class BadgeSeeder extends Seeder
+class WikiBadgeSeeder extends Seeder
 {
 	public function run()
 	{

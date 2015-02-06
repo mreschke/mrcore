@@ -1,5 +1,7 @@
 <?php namespace Mrcore\Mrcore;
 
+use Auth;
+
 /**
  * This is the user API layer used from the Mrcore class/facade
  * This layer allows us to change our model columns/properties while
@@ -8,64 +10,62 @@
 class User implements UserInterface
 {
 
-	private $model;
-
 	public function id()
 	{
-		return $this->model->id;
+		return $this->model()->id;
 	}
 
 	public function uuid()
 	{
-		return $this->model->uuid;
+		return $this->model()->uuid;
 	}
 
 	public function email()
 	{
-		return $this->model->email;
+		return $this->model()->email;
 	}
 
 	public function first()
 	{
-		return $this->model->first;
+		return $this->model()->first;
 	}
 
 	public function last()
 	{
-		return $this->model->last;
+		return $this->model()->last;
 	}
 
 	public function name()
 	{
 		$name = '';
-		if ($this->model->first) {
-			$name .= $this->model->first;
+		if ($this->model()->first) {
+			$name .= $this->model()->first;
 		}
-		if ($this->model->last) {
+		if ($this->model()->last) {
 			if ($name) $name .= " ";
-			$name .= $this->model->last;
+			$name .= $this->model()->last;
 		}
 		return $name;
 	}
 
 	public function alias()
 	{
-		return $this->model->alias;
+		return $this->model()->alias;
 	}
 
 	public function avatar()
 	{
-		return $this->model->avatar;
+		return $this->model()->avatar;
 	}
 
 	public function globalPostID()
 	{
-		return $this->model->global_post_id;
+		return $this->model()->global_post_id;
 	}
 
 	public function homePostID()
 	{
-		return $this->model->home_post_id;
+		return $this->model()->home_post_id;
 	}
 
 	/**
@@ -76,7 +76,12 @@ class User implements UserInterface
 	 */
 	public function getModel()
 	{
-		return $this->model;
+		#return $this->model;
+		return Auth::user();
+	}
+
+	private function model() {
+		return Auth::user();
 	}
 
 	/**
@@ -86,9 +91,9 @@ class User implements UserInterface
 	 */
 	public function setModel($post)
 	{
-		if (isset($post)) {
-			$this->model = $post;
-		}
+		#if (isset($post)) {
+		#$this->model = $post;
+		#}
 	}
 
 	/**
@@ -97,14 +102,14 @@ class User implements UserInterface
 	 */
 	public function isAdmin()
 	{
-		#return $this->model->isAdmin();
-		return \Mrcore\Models\User::isAdmin();
+		return Auth::admin();
 	}
 
 	public function isAuthenticated()
 	{
-		#return $this->model->isAuthenticated();
-		return \Mrcore\Models\User::isAuthenticated();
+		#return $this->model()->isAuthenticated();
+		#return \Mrcore\Models\User::isAuthenticated();
+		return Auth::check();
 	}	
 
 	public static function hasPermission($constant)

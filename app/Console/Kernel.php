@@ -12,10 +12,8 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected $commands = [
 		'Mrcore\Console\Commands\Inspire',
-		'Mrcore\Console\Commands\IndexPosts',
-		'Illuminate\Workbench\Console\WorkbenchMakeCommand',
+		'Mrcore\Modules\Wiki\Console\Commands\IndexPosts',
 	];
-	#??Artisan::add(new Mrcore\WorkbenchFramework\Install);
 
 	/**
 	 * Define the application's command schedule.
@@ -25,8 +23,7 @@ class Kernel extends ConsoleKernel {
 	 */
 	protected function schedule(Schedule $schedule)
 	{
-		$schedule->command('inspire')
-				 ->hourly();
+		$schedule->command('inspire')->hourly();
 	}
 
 }

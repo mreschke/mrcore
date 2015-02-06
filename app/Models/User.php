@@ -4,7 +4,7 @@ use DB;
 use Auth;
 use Config;
 use Session;
-use Mrcore\Support\Cache;
+use Mrcore\Modules\Wiki\Support\Cache; // ?????????/ this is bad, where does User model go, her or wiki?
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -94,29 +94,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	/**
-	 * Login was a success, perform remaining login process
-	 */
-	public function login()
-	{
-	    // Save users permissions into session
-	    $perms = $this->getPermissions();
-
-	    Session::put('user.admin', false);
-	    Session::put('user.perms', array());
-
-	    if (in_array('admin', $perms)) {
-	    	//Super admin, don't save anything into user.perms, no need
-	    	Session::put('user.admin', true);
-	    } else {
-	    	Session::put('user.perms', $perms);
-	    }
-
-	    // Update last login date
-	    $this->login_at = \Carbon\Carbon::now();
-	    $this->save();
-	}
-
-	/**
 	 * Get current logged in user
 	 * @return Mrcore\Models\User
 	 */
@@ -131,35 +108,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			#return self::find(Config::get('mrcore.anonymous'));
 			return Auth::user();
 		}
-	}
-
-	/**
-	 * Check if user is super admin
-	 *
-	 * @return boolean
-	 */
-	public static function isAdmin()
-	{
-		if (Auth::check()) {
-			return Session::get('user.admin');
-		}
-		return false;
-	}
-
-	/**
-	 * This is my auth check function, do not use Auth::check()
-	 * because I always login as anonymous
-	 *
-	 * @return boolean
-	 */
-	public static function isAuthenticated()
-	{
-		$user = Auth::user();
-		if (isset($user)) {
-			return $user->id != Config::get('mrcore.anonymous');
-		}
-		return false;
-		#return Auth::check();
 	}
 
 	/**
@@ -218,7 +166,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public static function hasPermission($constant)
 	{
-		if (User::isAdmin()) {
+		if (Auth::admin()) {
 			return true;
 		} else {
 			if (Session::has('user.perms')) {

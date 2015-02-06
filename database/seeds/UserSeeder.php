@@ -30,8 +30,8 @@ class UserSeeder extends Seeder
 		// 2 Admin
 		User::create(array(
 			'uuid'     => String::getGuid(),
-			'email'    => 'admin@example.com',
-			'password' => Hash::make('mrcore5'),
+			'email'    => 'mail@mreschke.com',
+			'password' => Hash::make('password'),
 			'first'    => 'Admin',
 			'last'     => 'Istrator',
 			'alias'    => 'admin',

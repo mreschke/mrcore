@@ -13,8 +13,7 @@ return [
 	| They are all merged and override each other.  Order is critical.  The first
 	| asset or view found in this array is used first.  Because of this order
 	| the small sub-theme should be defined first, then the larger base theme.
-	| Name must be vendor/package format.
-	| Paths are relative to your mrcore root (no beginning or trailing /)
+	| Path is relative to your laravel root (no beginning or trailing /).
 	|
 	*/
 
@@ -31,14 +30,43 @@ return [
 	|--------------------------------------------------------------------------
 	|
 	| Main Css
-	| default amelia darkly lumen spacelab cerulean readable superhero
-	| cosmo flatly simplex united cyborg journal slate yeti
+	| default cerulean cosmo cyborg darkly flatly journal lumen paper
+	| readable sandstone simplex slate spacelab superhero united yeti
 	|
 	*/	
 
-	'css' => 'slate.min.css'
+	'css' => 'paper.min.css',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Bootstrap Container
+	|--------------------------------------------------------------------------
+	|
+	| Enable or disable the bootstrap containers for the the main body,
+	| header and footer navbars.
+	|
+	*/	
+	
+	'container' => true,
+	'header_container' => true,
+	'footer_container' => true,
+
+	/*
+	|--------------------------------------------------------------------------
+	| Additional Asset Paths
+	|--------------------------------------------------------------------------
+	|
+	| Add additional asset paths to be picked up by the mrcore asset manager.
+	| These are added to the end of the asset array, after your themes.
+	| Useful when you have mrcore modules that have assets.  Path is relative
+	| to your laravel root (no beginning or trailing /).  Point to the actual
+	| assets folder of your choice. Example: ../Modules/Wiki/Assets
+	|
+	*/
+
+	'assets' => [
+		'../Modules/Wiki/Assets',
+	],
+
 
 ];
-
-// Mrcore\Themes\Bootswatch
-// Themes\Bootswatch

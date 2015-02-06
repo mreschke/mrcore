@@ -29,7 +29,6 @@ class AnalyzeRoute {
 		#	return;
 		#}
 		// FIX, if webdav, don't bother with router, I pulled this out of router.php
-
 		if (!Auth::check()) {
 			$user = User::find(Config::get('mrcore.anonymous'));
 			Auth::login($user);

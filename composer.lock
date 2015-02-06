@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "cbd3a0e9594e466658a223a76790cadf",
+    "hash": "f8009ce410fb87a841aec974974cd971",
     "packages": [
         {
             "name": "camspiers/porter-stemmer",
@@ -290,16 +290,16 @@
         },
         {
             "name": "easybook/geshi",
-            "version": "dev-master",
+            "version": "1.0.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/easybook/geshi.git",
-                "reference": "223c3ac0964472ef19027a064eef23ab0689c602"
+                "reference": "43551c725634f1f799e8437297ea32b8251a5879"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/easybook/geshi/zipball/223c3ac0964472ef19027a064eef23ab0689c602",
-                "reference": "223c3ac0964472ef19027a064eef23ab0689c602",
+                "url": "https://api.github.com/repos/easybook/geshi/zipball/43551c725634f1f799e8437297ea32b8251a5879",
+                "reference": "43551c725634f1f799e8437297ea32b8251a5879",
                 "shasum": ""
             },
             "require": {
@@ -334,7 +334,7 @@
                 "highlighter",
                 "syntax"
             ],
-            "time": "2014-05-11 07:59:00"
+            "time": "2013-11-07 14:45:36"
         },
         {
             "name": "filp/whoops",
@@ -393,69 +393,6 @@
                 "zf2"
             ],
             "time": "2014-10-26 09:05:09"
-        },
-        {
-            "name": "graham-campbell/exceptions",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Exceptions.git",
-                "reference": "4fbb619f7c8c8b711a5734a1e67f33c86df952dd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Exceptions/zipball/4fbb619f7c8c8b711a5734a1e67f33c86df952dd",
-                "reference": "4fbb619f7c8c8b711a5734a1e67f33c86df952dd",
-                "shasum": ""
-            },
-            "require": {
-                "filp/whoops": "1.1.*",
-                "illuminate/contracts": "5.0.*",
-                "illuminate/support": "5.0.*",
-                "php": ">=5.5.0",
-                "psr/log": "~1.0",
-                "symfony/debug": "2.6.*",
-                "symfony/http-foundation": "2.6.*"
-            },
-            "require-dev": {
-                "graham-campbell/testbench": "~2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GrahamCampbell\\Exceptions\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Graham Campbell",
-                    "email": "graham@mineuk.com"
-                }
-            ],
-            "description": "Provides Pretty Error Pages For Both Development And Production",
-            "keywords": [
-                "Graham Campbell",
-                "GrahamCampbell",
-                "Laravel Exceptions",
-                "Laravel-Exceptions",
-                "error",
-                "errors",
-                "exception",
-                "exceptions",
-                "framework",
-                "laravel",
-                "whoops"
-            ],
-            "time": "2015-01-29 21:32:05"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -620,53 +557,6 @@
                 }
             ],
             "time": "2015-01-01 16:31:18"
-        },
-        {
-            "name": "illuminate/workbench",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/illuminate/workbench.git",
-                "reference": "e0a39eb4a4e35c18bf6be57e3891e543d38b965a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/workbench/zipball/e0a39eb4a4e35c18bf6be57e3891e543d38b965a",
-                "reference": "e0a39eb4a4e35c18bf6be57e3891e543d38b965a",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/filesystem": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0",
-                "symfony/finder": "2.6.*"
-            },
-            "require-dev": {
-                "illuminate/console": "~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Workbench\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com"
-                }
-            ],
-            "description": "The Illuminate Workbench package.",
-            "time": "2014-11-10 19:21:41"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -860,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f0203bafbf151e815c125a6d77fe79e074af6c49"
+                "reference": "8865d2276be94f0a3497ba3bd26c906ae9e91e1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f0203bafbf151e815c125a6d77fe79e074af6c49",
-                "reference": "f0203bafbf151e815c125a6d77fe79e074af6c49",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8865d2276be94f0a3497ba3bd26c906ae9e91e1c",
+                "reference": "8865d2276be94f0a3497ba3bd26c906ae9e91e1c",
                 "shasum": ""
             },
             "require": {
@@ -977,7 +867,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-02-03 22:45:05"
+            "time": "2015-02-04 14:00:11"
         },
         {
             "name": "league/flysystem",
@@ -985,12 +875,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "7c96b75441002fb6799a4e355f2190b9d905782d"
+                "reference": "0fd4d3d2dd97d5b1c937d4bb8f42f7a3776cf782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/7c96b75441002fb6799a4e355f2190b9d905782d",
-                "reference": "7c96b75441002fb6799a4e355f2190b9d905782d",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0fd4d3d2dd97d5b1c937d4bb8f42f7a3776cf782",
+                "reference": "0fd4d3d2dd97d5b1c937d4bb8f42f7a3776cf782",
                 "shasum": ""
             },
             "require": {
@@ -1060,7 +950,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-02-01 15:53:05"
+            "time": "2015-02-04 20:51:56"
         },
         {
             "name": "monolog/monolog",
@@ -1271,20 +1161,20 @@
         },
         {
             "name": "predis/predis",
-            "version": "dev-master",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "b8decc75a884fce1bfc62d5bc6823298a678f890"
+                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/b8decc75a884fce1bfc62d5bc6823298a678f890",
-                "reference": "b8decc75a884fce1bfc62d5bc6823298a678f890",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/7a170b3d8123c556597b4fbdb88631f99de180c2",
+                "reference": "7a170b3d8123c556597b4fbdb88631f99de180c2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.3.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0"
@@ -1294,11 +1184,6 @@
                 "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.1-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Predis\\": "src/"
@@ -1322,7 +1207,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2015-01-02 13:37:26"
+            "time": "2015-01-02 12:51:34"
         },
         {
             "name": "psr/log",
@@ -2134,12 +2019,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-core.git",
-                "reference": "4603bcc66e20e23f018c67f7f9f3f8146a100c11"
+                "reference": "ae2ffe606ee824c29e910d4d2c7a6dc82fa9c3c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-core/zipball/4603bcc66e20e23f018c67f7f9f3f8146a100c11",
-                "reference": "4603bcc66e20e23f018c67f7f9f3f8146a100c11",
+                "url": "https://api.github.com/repos/symfony/security-core/zipball/ae2ffe606ee824c29e910d4d2c7a6dc82fa9c3c7",
+                "reference": "ae2ffe606ee824c29e910d4d2c7a6dc82fa9c3c7",
                 "shasum": ""
             },
             "require": {
@@ -2188,7 +2073,7 @@
             ],
             "description": "Symfony Security Component - Core Library",
             "homepage": "http://symfony.com",
-            "time": "2015-01-25 04:39:26"
+            "time": "2015-02-04 14:20:07"
         },
         {
             "name": "symfony/translation",
@@ -2360,28 +2245,28 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "1.x-dev",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "1b2307ca179a6f2a4339c426dfc4c415f73ec29d"
+                "reference": "343dbc07007272511727c9272e568d707682fc24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/1b2307ca179a6f2a4339c426dfc4c415f73ec29d",
-                "reference": "1b2307ca179a6f2a4339c426dfc4c415f73ec29d",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/343dbc07007272511727c9272e568d707682fc24",
+                "reference": "343dbc07007272511727c9272e568d707682fc24",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "4.*|5.0.*",
+                "illuminate/support": "5.0.*",
                 "maximebf/debugbar": "~1.10.2",
-                "php": ">=5.3.0",
-                "symfony/finder": "~2.3"
+                "php": ">=5.4.0",
+                "symfony/finder": "~2.6"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-v1.x": "1.8-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -2410,7 +2295,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2015-02-03 19:47:14"
+            "time": "2015-02-03 19:52:06"
         },
         {
             "name": "doctrine/instantiator",
@@ -3535,13 +3420,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "laravel/framework": 20,
-        "illuminate/workbench": 20,
-        "predis/predis": 20,
-        "easybook/geshi": 20,
-        "barryvdh/laravel-debugbar": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

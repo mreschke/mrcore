@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\Tag;
-use Mrcore\Models\PostTag;
+use Mrcore\Modules\Wiki\Models\Tag;
+use Mrcore\Modules\Wiki\Models\PostTag;
 
-class TagSeeder extends Seeder
+class WikiTagSeeder extends Seeder
 {
 	public function run()
 	{

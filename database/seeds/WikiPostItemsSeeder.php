@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\Format;
-use Mrcore\Models\Type;
-use Mrcore\Models\Framework;
-use Mrcore\Models\Mode;
+use Mrcore\Modules\Wiki\Models\Format;
+use Mrcore\Modules\Wiki\Models\Type;
+use Mrcore\Modules\Wiki\Models\Framework;
+use Mrcore\Modules\Wiki\Models\Mode;
 
-class PostItemsSeeder extends Seeder
+class WikiPostItemsSeeder extends Seeder
 {
 	public function run()
 	{

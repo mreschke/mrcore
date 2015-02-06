@@ -1,8 +1,9 @@
 <?php namespace Mrcore\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Config;
 use App;
+use Event;
+use Config;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -14,8 +15,11 @@ class AppServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 
+		// Subscribe to Events
+		Event::subscribe('UserEventHandler');
+
 		// Load our custom macros
-		require __DIR__.'/../Support/Macro.php';
+		#require __DIR__.'/../Support/Macro.php'; # NO use abort(404), abort(401), abort(500)...views automatically used
 
 		// ??????????????????????? App::error not exist, this was in global/start
 		// Mrcore FormValidationException
@@ -23,23 +27,6 @@ class AppServiceProvider extends ServiceProvider {
 		#{
 		#	return Redirect::back()->withInput()->withErrors($exceptions->getErrors());
 		#});
-
-
-		// Add my own internal configs
-		Config::set('mrcore.reserved_routes', array(
-			'admin', 'router', 'file', 'files',
-			'search', 'login', 'logout', 'demo',
-			'assets', 'images', 'js', 'css', 'theme',
-			'ace-editor',
-			'tmp'
-		));
-		Config::set('mrcore.legacy_routes', array(
-			'topic', 'topics',
-			'post', 'posts',
-		));
-		Config::set('mrcore.magic_folders', array('.sys', 'app'));
-		Config::set('mrcore.magic_folders_exceptions', array('.sys/public', 'app/public'));
-
 
 	}
 
@@ -64,6 +51,9 @@ class AppServiceProvider extends ServiceProvider {
 		$this->app->bind('Mrcore\Mrcore\PostInterface', 'Mrcore\Mrcore\Post');
 		$this->app->bind('Mrcore\Mrcore\RouterInterface', 'Mrcore\Mrcore\Router');
 		$this->app->bind('Mrcore\Mrcore\UserInterface', 'Mrcore\Mrcore\User');		
+
+		// Event Handler Bindings
+		$this->app->bind('UserEventHandler', 'Mrcore\Handlers\Events\UserEventHandler');
 
 		// DEBUG ONLY, set PHP error reporting level
 		error_reporting(E_ERROR | E_WARNING | E_PARSE);

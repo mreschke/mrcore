@@ -11,9 +11,8 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
-		],
+		#'event.name' => ['EventListener'],
+		#'auth.login' => ['Mrcore\Handlers\Events\LoginUser']
 	];
 
 	/**

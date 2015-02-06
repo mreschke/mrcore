@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\Router;
+use Mrcore\Modules\Wiki\Models\Router;
 
-class RouterSeeder extends Seeder
+class WikiRouterSeeder extends Seeder
 {
 	public function run()
 	{

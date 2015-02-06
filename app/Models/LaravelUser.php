@@ -1,4 +1,4 @@
-<?php namespace Mrcore\Models;
+<?php namespace Mrcore\Modules\Wiki\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

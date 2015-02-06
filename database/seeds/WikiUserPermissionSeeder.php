@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Mrcore\Models\UserPermission;
+use Mrcore\Modules\Wiki\Models\UserPermission;
 
-class UserPermissionSeeder extends Seeder
+class WikiUserPermissionSeeder extends Seeder
 {
 	public function run()
 	{

@@ -11,12 +11,11 @@ return [
 	| This driver manages the retrieval and authentication of the users
 	| attempting to get access to protected areas of your application.
 	|
-	| Supported: "database", "eloquent", "eloquentCached"
+	| Supported: "database", "eloquent", "mrcore"
 	|
 	*/
 
-	'driver' => 'eloquent',
-	#'driver' => 'eloquentCached',
+	'driver' => 'mrcore',
 
 	/*
 	|--------------------------------------------------------------------------
