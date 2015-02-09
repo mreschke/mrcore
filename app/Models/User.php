@@ -4,7 +4,7 @@ use DB;
 use Auth;
 use Config;
 use Session;
-use Mrcore\Modules\Wiki\Support\Cache; // ?????????/ this is bad, where does User model go, her or wiki?
+use Mrcore\Modules\Wiki\Support\Cache;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;

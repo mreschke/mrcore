@@ -149,9 +149,9 @@ return [
 		/*
 		 * Mrcore Service Providers...
 		 */
+		#'Mrcore\Modules\Auth\Providers\AuthServiceProvider',
+		#'Mrcore\Modules\Wiki\Providers\WikiServiceProvider',
 		'Mrcore\Modules\Foundation\Providers\FoundationServiceProvider',
-		'Mrcore\Modules\Auth\Providers\AuthServiceProvider',
-		'Mrcore\Modules\Wiki\Providers\WikiServiceProvider',
 
 		
 

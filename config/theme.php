@@ -18,9 +18,15 @@ return [
 	*/
 
 	'themes' => [
+		#[
+		#	'namespace' => 'Mrcore\Themes\Dynatron',
+		#	'path' => '../Themes/Dynatron',
+		#	'type' => 'subtheme'
+		#],
 		[
 			'namespace' => 'Mrcore\Themes\Bootswatch',
-			'path' => '../Themes/Bootswatch'
+			'path' => '../Themes/Bootswatch',
+			'type' => 'basetheme'
 		]
 	],
 
