@@ -17,7 +17,6 @@ return array(
 	*/
 
 	'driver' => 'eloquent', #default
-	#'driver' => 'eloquentCached',
 
 	/*
 	|--------------------------------------------------------------------------

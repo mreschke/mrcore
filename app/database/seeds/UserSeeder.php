@@ -1,13 +1,10 @@
 <?php
-
 class UserSeeder extends Seeder
 {
-
 	public function run()
 	{
 		DB::table('users')->delete();
 		DB::table('user_roles')->delete();
-
 		// 1 Anonymous User
 		User::create(array(
 			'uuid'     => \Mrcore\Helpers\String::getGuid(),
@@ -22,7 +19,6 @@ class UserSeeder extends Seeder
 			'login_at'  => '1900-01-01 00:00:00',
 			'disabled'       => true
 		));
-
 		// 2 Admin
 		User::create(array(
 			'uuid'     => \Mrcore\Helpers\String::getGuid(),
@@ -37,23 +33,5 @@ class UserSeeder extends Seeder
 			'login_at'  => '1900-01-01 00:00:00',
 			'disabled'       => false
 		));
-
-		// 3 mreschke
-		User::create(array(
-			'uuid'     => \Mrcore\Helpers\String::getGuid(),
-			'email'    => 'mreschke@dynatronsoftware.com',
-			'password' => Hash::make('techie'),
-			'first'    => 'Matthew',
-			'last'     => 'Reschke',
-			'alias'    => 'mreschke',
-			'avatar'   => 'avatar_user3.png',
-			'global_post_id' => 4,
-			'home_post_id'   => 3,
-			'login_at'  => '1900-01-01 00:00:00',
-			'disabled'       => false
-		));
-
-
 	}
-
 }

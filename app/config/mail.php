@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'mandrill',
+	'driver' => 'smtp',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
-	'from' => array('address' => 'support@dynatronsoftware.com', 'name' => 'Dynatron Software'),
+	'from' => array('address' => null, 'name' => null),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return array(
 	|
 	*/
 
-	'username' => 'mreschke@dynatronsoftware.com',
+	'username' => null,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return array(
 	|
 	*/
 
-	'password' => 'tgsN8nCylNSbkH0Vzb3m2g',
+	'password' => null,
 
 	/*
 	|--------------------------------------------------------------------------
