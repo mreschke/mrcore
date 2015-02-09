@@ -15,7 +15,7 @@ return array(
 	*/
 
 	'debug' => getenv('debug'),
-	error_reporting(0), #-1 dev, 0 prod
+	#error_reporting(0), #-1 dev, 0 prod
 
 	/*
 	|--------------------------------------------------------------------------
@@ -128,7 +128,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
 		// Additional Services
-		'Barryvdh\Debugbar\ServiceProvider',
+		#'Barryvdh\Debugbar\ServiceProvider',
 		#'Way\Generators\GeneratorsServiceProvider',
 
 		// Mrcore Services

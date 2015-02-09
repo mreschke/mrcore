@@ -20,7 +20,9 @@
 		"mreschke/dbal": "dev-master",
 		"mreschke/render": "dev-master",
 		"react/react": "0.4.2",
-		"barryvdh/laravel-debugbar": "~1.8@dev"
+		"barryvdh/laravel-debugbar": "~1.8@dev",
+		"orchestra/testbench": "2.2.*",
+		"guzzlehttp/guzzle": "~4.0"
 	},
 	"autoload": {
 		"classmap": [
@@ -33,7 +35,7 @@
 			"app/library"
 		],
 		"psr-0": {
-			"Mrcore": "app/"
+			"Mrcore": "app/"			
 		}
 	},
 	"scripts": {

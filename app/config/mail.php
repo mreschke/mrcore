@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mandrill',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
+	'host' => 'smtp.mandrillapp.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return array(
 	| used globally for all e-mails that are sent by your application.
 	|
 	*/
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'support@dynatronsoftware.com', 'name' => 'Dynatron Software'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -79,7 +79,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'mreschke@dynatronsoftware.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'tgsN8nCylNSbkH0Vzb3m2g',
 
 	/*
 	|--------------------------------------------------------------------------

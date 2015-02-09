@@ -231,8 +231,8 @@ $private = array ();
 			<ul class="list-unstyled">
 			<? foreach ($admin as $item): ?>
 				<li>
-					<a href="<?= $item[url] ?>">
-						<?= $item[name] ?>
+					<a href="<?= $item["url"] ?>">
+						<?= $item["name"] ?>
 					</a>
 				</li>
 			<? endforeach ?>
@@ -247,8 +247,8 @@ $private = array ();
 			<ul class="list-unstyled">
 			<? foreach ($popular as $item): ?>
 				<li>
-					<a href="<?= $item[url] ?>">
-						<?= $item[name] ?>
+					<a href="<?= $item["url"] ?>">
+						<?= $item["name"] ?>
 					</a>
 				</li>
 			<? endforeach ?>
@@ -257,13 +257,14 @@ $private = array ();
 			<? if (count($private) > 0) echo "<hr />"; ?>
 			<? foreach ($private as $item): ?>
 				<li>
-					<a href="<?= $item[url] ?>">
-						<?= $item[name] ?>
+					<a href="<?= $item["url"] ?>">
+						<?= $item["name"] ?>
 					</a>
 				</li>
 			<? endforeach ?>
 		<? endif ?>
 	</div>
+
 </div>'),
 			'teaser' => Mrcore\Crypt::encrypt(''),
 			'contains_script' => true,

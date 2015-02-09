@@ -65,6 +65,6 @@ App::register('Mrcore\BootswatchTheme\BootswatchThemeServiceProvider');
 // Bootswatch Theme Override
 // default cerulean cosmo cyborg darkly flatly journal lumen paper
 // readable sandstone simplex slate spacelab superhero united yeti
-$theme = 'dynatron';
+$theme = 'paper';
 Layout::replaceCss("css/bootstrap/", "sub-theme/css/bootstrap/$theme.min.css");
 Layout::css("sub-theme/css/bootstrap/override/$theme-dynatron.css");
