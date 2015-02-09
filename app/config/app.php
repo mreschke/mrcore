@@ -15,7 +15,7 @@ return array(
 	*/
 
 	'debug' => getenv('debug'),
-	#error_reporting(0), #-1 dev, 0 prod
+	error_reporting(0), #-1 dev, 0 prod
 
 	/*
 	|--------------------------------------------------------------------------
