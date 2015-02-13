@@ -24,7 +24,9 @@ return [
 			'provider' => 'Mrcore\Modules\Foundation\Providers\FoundationServiceProvider',
 			'path' => '../Modules/Foundation',
 			'routes' => '../Modules/Foundation/Http/routes.php',
+			'route_prefix' => null,
 			'views' => null,
+			'view_prefix' => null,
 			'assets' => null,
 			'enabled' => true,
 		],
@@ -36,7 +38,9 @@ return [
 			'provider' => 'Mrcore\Modules\Auth\Providers\AuthServiceProvider',
 			'path' => '../Modules/Auth',
 			'routes' => '../Modules/Auth/Http/routes.php',
+			'route_prefix' => null,
 			'views' => '../Modules/Auth/Views',
+			'view_prefix' => null,
 			'assets' => '../Modules/Auth/Assets',
 			'enabled' => true,
 		],
@@ -48,10 +52,26 @@ return [
 			'provider' => 'Mrcore\Modules\Wiki\Providers\WikiServiceProvider',
 			'path' => '../Modules/Wiki',
 			'routes' => '../Modules/Wiki/Http/routes.php',
+			'route_prefix' => null,
 			'views' => '../Modules/Wiki/Views',
+			'view_prefix' => null,
 			'assets' => '../Modules/Wiki/Assets',
 			'enabled' => true,
 		],
+
+		/*'%app%' => [
+			'type' => 'module',
+			'namespace' => 'Mrcore\Apps\Mrcore\Appstub',
+			'controller_namespace' => 'Mrcore\Apps\Mrcore\Appstub\Http\Controllers',
+			'provider' => 'Mrcore\Apps\Mrcore\Appstub\Providers\AppstubServiceProvider',
+			'path' => '../Apps/Mrcore\Appstub',
+			'routes' => '../Apps/Mrcore/Appstub/Http/routes.php',
+			'route_prefix' => 'appstub',
+			'views' => '../Apps/Mrcore/Appstub/Views',
+			'view_prefix' => 'appstub',
+			'assets' => '../Apps/Mrcore/Appstub/Assets',
+			'enabled' => true,
+		],*/
 
 		// Bootswatch Themes
 		// default cerulean cosmo cyborg darkly flatly journal lumen paper
@@ -63,7 +83,9 @@ return [
 			'provider' => 'Mrcore\Themes\Bootswatch\Providers\ThemeServiceProvider',
 			'path' => '../Themes/Bootswatch',
 			'routes' => null,
+			'route_prefix' => null,
 			'views' => '../Themes/Bootswatch/Views',
+			'view_prefix' => null,
 			'assets' => '../Themes/Bootswatch/Assets',
 			'css' => ['css/bootstrap/simplex.min.css'],
 			'container' => [
@@ -81,7 +103,9 @@ return [
 			'provider' => 'Mrcore\Themes\Dynatron\Providers\ThemeServiceProvider',
 			'path' => '../Themes/Dynatron',
 			'routes' => null,
+			'route_prefix' => null,
 			'views' => '../Themes/Dynatron/Views',
+			'view_prefix' => null,
 			'assets' => '../Themes/Dynatron/Assets',
 			'css' => [
 				'css/bootstrap/dynatron.min.css',
@@ -98,7 +122,7 @@ return [
 	|--------------------------------------------------------------------------
 	|
 	| Defines the modules loading order for each item (assets, views, routes).
-	| First item found wins. This fine grain control control over module
+	| First item found wins. This fine grained control control over module
 	| overrides giving you the control.
 	| If you have the Mrcore\Modules\Wiki module enabled, then use %app% to define
 	| the order of the dynamically loaded wiki application.  Usually apps are first
@@ -116,7 +140,7 @@ return [
 	],
 
 	'views' => [
-		'%app',
+		'%app%',
 		'SubTheme',
 		'Auth',
 		'Wiki',
