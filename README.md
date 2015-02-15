@@ -1,4 +1,4 @@
-# Mrcore6
+# Mrcore5
 
 A Wiki/CMS built with Laravel 5
 

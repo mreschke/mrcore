@@ -15,7 +15,10 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
+
+		// I turned this off for some reason, fix it
 		#'Mrcore\Http\Middleware\VerifyCsrfToken',
+
 		'Mrcore\Modules\Wiki\Http\Middleware\AnalyzeRoute',
 		'Mrcore\Modules\Foundation\Http\Middleware\LoadModules',
 	];
@@ -28,7 +31,6 @@ class Kernel extends HttpKernel {
 	protected $routeMiddleware = [
 		'auth' => 'Mrcore\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		#'auth.digest' => 'Mrcore\Http\Middleware\AuthenticateWithDigestAuth',
 		'guest' => 'Mrcore\Http\Middleware\RedirectIfAuthenticated',
 	];
 
