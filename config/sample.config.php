@@ -53,7 +53,7 @@ class Config {
 	const ENABLE_WYSIWYG = false;
 	const WIKI_HELP_TOPIC_ID = 3;
 	const GLOBAL_TOPIC = 2;
-	const LOGO_URL = '/logo.png';
+	const LOGO_URL = '';
 	const USERINFO_TOPIC = 4;
 	const SEARCHBOX_TOPIC = 5;
 	const CACHE_VERSION = null;
