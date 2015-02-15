@@ -39,7 +39,6 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-
         if ($this->isHttpException($e)) {
 
         	// FIX...I could if 401 redirec to login if not authenticated
