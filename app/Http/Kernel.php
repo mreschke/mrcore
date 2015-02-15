@@ -17,6 +17,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
 		#'Mrcore\Http\Middleware\VerifyCsrfToken',
 		'Mrcore\Modules\Wiki\Http\Middleware\AnalyzeRoute',
+		'Mrcore\Modules\Foundation\Http\Middleware\LoadModules',
 	];
 
 	/**
